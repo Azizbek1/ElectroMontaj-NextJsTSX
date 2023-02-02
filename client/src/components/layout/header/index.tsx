@@ -1,10 +1,12 @@
+"use client"
 import Image from "next/image";
 import Navbar from "./navbar";
 import style from "./style.module.scss";
 import { logoPNG } from "@/assets";
 import Link from "next/link";
 import { AddressData, PhoneData } from "./data";
-import { MaterialIcon } from "@/components/ui/icons/MaterialIcon";
+import { MaterialIcon }  from "@/components/ui/icons/MaterialIcon";
+import Slider from "@/components/library/slider";
 
 export default function Header() {
   return (
@@ -17,7 +19,7 @@ export default function Header() {
         </div>
         <div className={style.adress}>
           {AddressData.map((item) => (
-            <div className={style.adressFlex}>
+            <div className={style.adressFlex} key={item.id}>
               <div><MaterialIcon name={item.icon} /></div>
               <div>{item.title}</div>
             </div>
@@ -25,7 +27,7 @@ export default function Header() {
         </div>
         <div className={style.phone}>
         {PhoneData.map((item) => (
-            <div className={style.adressFlex}>
+            <div className={style.adressFlex} key={item.id}>
               {item.icon ? <div><MaterialIcon name={item.icon} /></div> : ""}
               <div>{item.title}</div>
             </div>
@@ -33,7 +35,9 @@ export default function Header() {
         </div>
       </div>
       <Navbar />
-      <div>SLider</div>
+      <div>
+        <Slider />
+      </div>
     </header>
   );
 }
