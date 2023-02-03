@@ -1,24 +1,21 @@
 import Image from "next/image";
-import Navbar from "./navbar";
 import style from "./style.module.scss";
 import { logoPNG } from "@/assets";
 import Link from "next/link";
-import { AddressData} from "./data";
+import { AddressData } from "./data";
 import { MaterialIcon } from "@/components/ui/icons/MaterialIcon";
-import SliderPage from "@/components/library/slider";
-
-
+import NavbarCustoms from "../navbar/NavbarCustoms";
 
 export default function Header() {
   return (
     <header className={style.header}>
       <div className={style.headerTop}>
-        <div className={style.logo}>
+        <div>
           <Link href="/">
             <Image src={logoPNG} width={150} alt="png" priority />
           </Link>
         </div>
-        <div className={style.adress}>
+        <div >
           {AddressData.map((item) => (
             <div className={style.adressFlex} key={item.id}>
               <MaterialIcon name={item.icon} />
@@ -26,12 +23,9 @@ export default function Header() {
             </div>
           ))}
         </div>
-        <div className={style.phone}>
+        <div >
+          <NavbarCustoms/>
         </div>
-      </div>
-      <Navbar />
-      <div>
-          <SliderPage />    
       </div>
     </header>
   );
