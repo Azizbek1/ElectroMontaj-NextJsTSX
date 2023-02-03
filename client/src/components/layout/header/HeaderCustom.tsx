@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AddressData } from "./data";
 import { MaterialIcon } from "@/components/ui/icons/MaterialIcon";
 import NavbarCustoms from "../navbar/NavbarCustoms";
+import Slider from "@/components/library/Slider";
 
 export default function Header() {
   return (
@@ -23,8 +24,11 @@ export default function Header() {
             </div>
           ))}
         </div>
-        <div >
-          <NavbarCustoms/>
+        <div className="navbar">
+        <NavbarCustoms/>
+        </div>
+        <div className="slider">
+       
         </div>
       </div>
     </header>
