@@ -1,0 +1,9 @@
+.header{
+    @apply  bg-white relative;
+}
+.center{
+    @apply  px-20 xl:container md:container sm:container lg:container container  mx-auto;
+}
+.slider{
+    width: 100%;
+}
