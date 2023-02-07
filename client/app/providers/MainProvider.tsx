@@ -7,8 +7,6 @@ import { store } from 'store/store'
 
 import Layout from '@/components/layout/Layout'
 
-import ReduxToastr from '@/ui/redux-toastr/ReduxToastr'
-
 import { TypeComponentAuthFields } from '@/shared/types/auth.types'
 
 const queryClient = new QueryClient({
@@ -24,7 +22,6 @@ const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
 		<HeadProvider>
 			<Provider store={store}>
 				<QueryClientProvider client={queryClient}>
-					<ReduxToastr />
 					<AuthProvider Component={Component}>
 						<Layout>{children}</Layout>
 					</AuthProvider>
