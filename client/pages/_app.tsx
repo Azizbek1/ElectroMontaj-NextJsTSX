@@ -11,7 +11,7 @@ type TypeAppProps = AppProps & TypeComponentAuthFields;
 
 const MyApp = ({ Component, pageProps }: TypeAppProps) => {
   return (
-    <MainProvider Component={Component}>
+    <MainProvider>
       <Component {...pageProps} />
     </MainProvider>
   );
