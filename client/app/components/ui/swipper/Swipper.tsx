@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
-import { ISlide } from "@/ui/slider/slider.types";
 import Image from "next/image";
 
 const SipperSlider = ({ slide }: any) => {
