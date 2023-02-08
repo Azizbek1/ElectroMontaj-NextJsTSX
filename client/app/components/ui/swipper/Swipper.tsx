@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from "next/image";
 
+import styles from "./swiper.module.scss";
 const SipperSlider = ({ slide }: any) => {
   return (
     <>
@@ -13,27 +14,31 @@ const SipperSlider = ({ slide }: any) => {
         pagination={{
           dynamicBullets: true,
         }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 5000,
+        //   disableOnInteraction: false,
+        // }}
         loop={true}
-        modules={[Pagination, Autoplay, Navigation]}
+        modules={[Pagination, /* Autoplay, */ Navigation]}
         className="mySwiper"
       >
         {slide.map((item: any, index: any) => (
-            <SwiperSlide key={index}>
-              <div>
-                <h1>{item.title}</h1>
-                <p>{item.text}</p>
+          <SwiperSlide key={index}>
+            <div className={styles.slider}>
+              <div className={styles.absolyute}>
+                <h1 className={styles.title}>{item.title}</h1>
+                <p className={styles.text}>{item.text}</p>
+              </div>
+              <div className={styles.images}>
                 <Image
                   src={`/jpg/${item.images}`}
                   alt="jpg"
-                  width={100}
-                  height={100}
+                  width="100%"
+                  height={600}
                 />
               </div>
-            </SwiperSlide>
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
     </>

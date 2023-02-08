@@ -1,8 +1,8 @@
 import { FC } from "react";
 import MenuItem from "./nav.item";
 import { IMenuAddrePhone } from "@/components/fakeData/navigations/nav.types";
-import styles from "./nav.module.scss";
-const NavigationsTop: FC<{ menu: IMenuAddrePhone }> = ({ menu: { items } }) => {
+import styles from "./navbar.module.scss";
+const Navbar: FC<{ menu: IMenuAddrePhone }> = ({ menu: { items } }) => {
   return (
     <ul className={styles.menu}>
       {items.map((item: any) => (
@@ -12,4 +12,4 @@ const NavigationsTop: FC<{ menu: IMenuAddrePhone }> = ({ menu: { items } }) => {
   );
 };
 
-export default NavigationsTop;
+export default Navbar;

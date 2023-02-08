@@ -1,0 +1,30 @@
+.slider{
+    position: relative;
+}
+.images {
+    span{
+        width: 100% !important;
+    }
+    img{
+	    width: 100% !important;
+        height: 600px !important;
+        object-fit: cover;
+    }
+}
+.title{
+    @apply font-bold text-white text-3xl tracking-widest uppercase mb-3;
+}
+.text{
+    @apply font-normal text-white text-2xl;
+}
+.absolyute{
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 22;
+}
+

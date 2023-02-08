@@ -1,9 +1,16 @@
 .header{
-    @apply  bg-white relative;
+    @apply  bg-white;
 }
 .center{
     @apply  px-20 xl:container md:container sm:container lg:container container  mx-auto;
 }
+.headerFlex{
+    @apply flex justify-between items-center pt-4 pb-11;
+}
+/* ========= Slider =========  */
 .slider{
-    width: 100%;
+    @apply w-full;
+}
+.navigation{
+    @apply  relative;
 }

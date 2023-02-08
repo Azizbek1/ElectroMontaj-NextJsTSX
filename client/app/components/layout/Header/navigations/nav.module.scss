@@ -1,0 +1,9 @@
+.menu{
+    @apply flex flex-col;
+}
+.item{
+    @apply flex items-center font-normal text-lg ;
+}
+.icon{
+    @apply mr-2 text-orange;
+}
