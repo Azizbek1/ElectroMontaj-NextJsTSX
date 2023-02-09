@@ -35,8 +35,7 @@ const SipperSlider = ({ slide }: any) => {
                   alt="jpg"
                   width="100%"
                   height={600}
-                  quality={100}
-                  objectFit="cover"  
+                  quality="100"
                 />
               </div>
             </div>
