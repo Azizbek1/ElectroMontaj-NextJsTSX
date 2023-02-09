@@ -1,7 +1,12 @@
 .menu {
 	@apply flex xl:container md:container sm:container lg:container  mx-auto container  justify-between items-center  p-3 animate-fade;
     li{
-        @apply p-2 hover:bg-orange hover:text-white  transition-all;
+		&:hover{
+			a{
+				color: white;
+			}
+		}
+        @apply p-2 hover:bg-orange   transition-all;
         border-radius: 4px;
     }
 	.active{
