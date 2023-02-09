@@ -19,11 +19,11 @@ const Navbar: FC<{ menu: IMenuAddrePhone }> = ({ menu: { items } }) => {
           />
         </a>
       </div>
-      <div className={styles.itemsMenu}>
+      <ul className={styles.itemsMenu}>
         {items.map((item: any) => (
           <MenuItem key={item.id} item={item} />
         ))}
-      </div>
+      </ul>
       <div className={styles.buttons}>
         <button className={styles.button}>Оставить заявку</button>
       </div>

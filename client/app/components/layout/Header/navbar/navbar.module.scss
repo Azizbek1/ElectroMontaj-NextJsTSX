@@ -1,10 +1,12 @@
 .menu {
-	@apply px-20 xl:container md:container sm:container lg:container   mx-auto container  flex justify-between items-center  p-3 animate-fade;
+	@apply flex xl:container md:container sm:container lg:container  mx-auto container  justify-between items-center  p-3 animate-fade;
     li{
         @apply p-2 hover:bg-orange hover:text-white  transition-all;
         border-radius: 4px;
-		
     }
+	.active{
+		display: block;
+	}
 	border-radius: 4px;
 	li {
 		@apply m-2;

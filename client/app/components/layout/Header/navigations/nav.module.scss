@@ -2,7 +2,7 @@
     @apply flex;
 }
 .item{
-    @apply flex items-center font-normal text-lg ;
+    @apply flex items-center font-normal text-sm mx-2;
 }
 .icon{
     @apply mr-2 text-orange;
