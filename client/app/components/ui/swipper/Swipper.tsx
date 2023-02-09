@@ -35,6 +35,7 @@ const SipperSlider = ({ slide }: any) => {
                   alt="jpg"
                   width="100%"
                   height={600}
+                  priority
                 />
               </div>
             </div>
