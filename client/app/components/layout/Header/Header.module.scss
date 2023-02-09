@@ -2,15 +2,16 @@
     @apply  bg-white;
 }
 .center{
-    @apply  px-20 xl:container md:container sm:container lg:container container  mx-auto;
+    @apply  px-20 xl:container md:container sm:container lg:container container  mx-auto bg-gray-700;
 }
 .headerFlex{
-    @apply flex justify-between items-center pt-4 pb-11;
+    @apply flex justify-between items-center pt-1 pb-1 text-white;
 }
 /* ========= Slider =========  */
 .slider{
     @apply w-full;
 }
 .navigation{
-    @apply  relative;
+    background: white;
+    z-index: 55;
 }

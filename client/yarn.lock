@@ -1726,11 +1726,6 @@ html-react-parser@^1.4.8:
     react-property "2.0.0"
     style-to-js "1.1.0"
 
-html-to-draftjs@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/html-to-draftjs/-/html-to-draftjs-1.5.0.tgz#0df0eabf429deaedb63f5c859889e2c983606e86"
-  integrity sha512-kggLXBNciKDwKf+KYsuE+V5gw4dZ7nHyGMX9m0wy7urzWjKGWyNFetmArRLvRV0VrxKN70WylFsJvMTJx02OBQ==
-
 htmlparser2@7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-7.2.0.tgz#8817cdea38bbc324392a90b1990908e81a65f5a5"
