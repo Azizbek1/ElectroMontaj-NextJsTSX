@@ -36,7 +36,7 @@ const SipperSlider = ({ slide }: any) => {
                   width="100%"
                   height={600}
                   quality={100}
-                  objectFit="cover"
+                  objectFit="cover"  
                 />
               </div>
             </div>
