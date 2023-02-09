@@ -33,9 +33,9 @@ const SipperSlider = ({ slide }: any) => {
                 <Image
                   src={`/jpg/${item.images}`}
                   alt="jpg"
-                  width="100%"
+                  width={1400}
                   height={600}
-                  quality="100"
+                  quality={100}
                   layout="responsive"
                 />
               </div>
