@@ -36,6 +36,7 @@ const SipperSlider = ({ slide }: any) => {
                   width="100%"
                   height={600}
                   quality="100"
+                  layout="responsive"
                 />
               </div>
             </div>
