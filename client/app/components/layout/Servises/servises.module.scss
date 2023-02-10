@@ -1,15 +1,22 @@
 .servisesFLex {
 	@apply flex-wrap flex justify-around;
 }
-.servisesTitle{
-    @apply text-center text-3xl mb-5;
+.servisesTitle {
+	@apply text-center text-3xl mb-5 font-bold;
+	text-transform: uppercase;
 }
 .servises {
 	@apply bg-white pt-10 pb-10;
 }
 .item {
-	@apply  shadow-lg w-1/4 m-3 border-2 border-gray-300 bg-white flex items-center justify-center flex-col p-5 rounded;
+	@apply shadow-lg w-3/12 m-3 border-2 border-gray-300 bg-white flex items-center justify-center flex-col p-5 rounded;
 }
 .itemImage {
-	@apply w-24 h-24 flex items-center justify-center rounded-full bg-orange;
+	@apply w-24 h-24 flex items-center justify-center rounded-full bg-orange mb-3;
+}
+.seeServises {
+	@apply text-center mt-5;
+	button {
+		@apply bg-orange text-white p-4 rounded hover:bg-red;
+	}
 }

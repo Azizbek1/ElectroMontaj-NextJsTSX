@@ -1,0 +1,11 @@
+.dover {
+	background-image: url('/jpg/bg1.jpg');
+	background-position: 50% bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #f6f6f6;
+	padding: 70px 0 260px;
+}
+.doverTitle {
+	@apply text-center text-3xl mb-5 font-bold;
+}

@@ -18,6 +18,9 @@ const Servises: FC = () => {
           );
         })}
       </div>
+      <div className={styles.seeServises}>
+         <button>Посмотреть все услуги</button>
+      </div>
     </div>
   );
 };
