@@ -7,7 +7,7 @@ const Dover: FC = () => {
   return (
     <div className={styles.dover}>
       <h2 className={styles.doverTitle}>ПОЧЕМУ НАМ ДОВЕРЯЮТ СОТНИ КЛИЕНТОВ</h2>
-      <div>
+      <div className={styles.doverFLex}>
         {doverItem.map((item) => (
           <DoverItemBox
             image={item.image}

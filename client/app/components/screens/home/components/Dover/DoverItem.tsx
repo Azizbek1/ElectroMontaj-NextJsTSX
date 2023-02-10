@@ -10,7 +10,7 @@ const DoverItemBox = ({ text, title, image, id }: IDover) => {
       </div>
       <div>
         <h3 className={styles.title}>{title}</h3>
-        <p>{text}</p>
+        <p className={styles.text}>{text}</p>
       </div>
     </div>
   );
