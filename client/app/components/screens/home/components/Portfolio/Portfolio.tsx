@@ -7,15 +7,10 @@ const Portfolio: FC = () => {
   return (
     <div className={styles.portfolio}>
       <h2 className={styles.portfolioTitle}>
-        {" "}
         ПРОЕКТЫ, ВЫПОЛНЕННЫЕ НАШЕЙ КОМПАНИЕЙ В 2019 ГОДУ{" "}
       </h2>
-      <br />
-      <p>
-        {" "}
-        Мы заблаговременно оговариваем сроки выполнения и соблюдаем все
-        договоренности!{" "}
-      </p>
+      <hr  className={styles.hr}/>
+      <p className={styles.portfolioText}>Мы заблаговременно оговариваем сроки выполнения и соблюдаем все договоренности!</p>
       <div className={styles.portfolioFLex}>
         {portItems.map((item) => (
           <PortfolioItem
@@ -25,6 +20,9 @@ const Portfolio: FC = () => {
             link={item.link}
           />
         ))}
+      </div>
+      <div className={styles.button}>
+        <button>Посмотеть ешё</button>
       </div>
     </div>
   );
