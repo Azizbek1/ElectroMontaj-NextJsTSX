@@ -1,0 +1,15 @@
+.servisesFLex {
+	@apply flex-wrap flex justify-around;
+}
+.servisesTitle{
+    @apply text-center text-3xl mb-5;
+}
+.servises {
+	@apply bg-white pt-10 pb-10;
+}
+.item {
+	@apply  shadow-lg w-1/4 m-3 border-2 border-gray-300 bg-white flex items-center justify-center flex-col p-5 rounded;
+}
+.itemImage {
+	@apply w-24 h-24 flex items-center justify-center rounded-full bg-orange;
+}

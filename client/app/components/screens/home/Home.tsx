@@ -1,13 +1,10 @@
 import { FC } from "react";
-
 import { Meta } from "@/utils/meta";
-import styles from './home.module.scss'
+import Servises from "@/components/layout/Servises/Servises";
 const Home: FC = () => {
   return (
     <Meta title="Электро-монтаж" description="">
-      <main className={styles.main}>
-			
-	  </main>
+      <Servises />
     </Meta>
   );
 };

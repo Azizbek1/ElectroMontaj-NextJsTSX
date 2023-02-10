@@ -5,7 +5,7 @@
 	@apply px-20  bg-gray-700;
 }
 .headerFlex {
-	@apply justify-center flex-wrap flex xl:container md:container container lg:container container md:justify-between items-center pt-1 pb-1 text-white;
+	@apply justify-center flex-wrap flex xl:container md:container container lg:container  md:justify-between items-center pt-1 pb-1 text-white;
 }
 /* ========= Slider =========  */
 .slider {

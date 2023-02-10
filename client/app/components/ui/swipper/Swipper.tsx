@@ -14,12 +14,12 @@ const SipperSlider = ({ slide }: any) => {
         pagination={{
           dynamicBullets: true,
         }}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         loop={true}
-        modules={[Pagination, /* Autoplay, */ Navigation]}
+        modules={[Pagination, Autoplay, Navigation]}
         className="mySwiper"
       >
         {slide.map((item: any, index: any) => (
