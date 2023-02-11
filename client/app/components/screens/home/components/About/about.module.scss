@@ -1,0 +1,12 @@
+.about{
+    background: #f6f6f6;
+    @apply py-10;
+}
+
+.title{
+    @apply text-3xl font-medium mb-5;
+}
+
+.text{
+    @apply text-base mb-4 text-gray-500;
+}
