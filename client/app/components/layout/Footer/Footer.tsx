@@ -1,20 +1,31 @@
 import { FC, useState } from "react";
 import styles from "./footer.module.scss";
+import { MaterialIcon } from "@/components/ui/icons/MaterialIcon";
 
 const Footer: FC = () => {
   return (
     <div className={styles.footer}>
-      <div>
-        <div>
-          <ul>
-            <li><a href="#">г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
-            <li><a href="#">г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
-            <li><a href="#">г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
-            <li><a href="#">г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
+      <div className={styles.footerFlex}>
+        <div className={styles.footerItem}>
+          <h4>Контакты</h4>
+          <ul className={styles.menu}>
+            <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdPhoneForwarded"} /></span>г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
+            <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdPhoneForwarded"} /></span>г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
+            <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdPhoneForwarded"} /></span>г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
+            <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdPhoneForwarded"} /></span>г. Узбекистон, ул. Калужская, 80, офис 315</a></li>
           </ul>
         </div>
-        <div></div>
-        <div></div>
+        <div className={styles.footerItem}> 
+            <h4>Мы в соц сетях</h4>
+            <ul className={styles.menu}>
+              <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdOutlinePersonalVideo"} /></span>Telegram</a></li>
+              <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdOutlinePersonalVideo"} /></span>Instagram</a></li>
+              <li className={styles.menuItem}><a className={styles.menuLinks} href="#"><span className={styles.icon}><MaterialIcon name={"MdOutlinePersonalVideo"} /></span>Facebook</a></li>
+            </ul>
+        </div>
+        <div className={styles.footerItem}> 
+          <button className={styles.button}>Заказать званок</button>
+        </div>
       </div>
     </div>
   );

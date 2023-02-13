@@ -1,3 +1,30 @@
 .footer{
-    @apply pb-10 pt-10;
+    @apply pb-10 pt-10 bg-gray-700;
+}
+.footerFlex{
+    @apply px-10;
+    display: flex;
+    justify-content: space-between;
+}
+.footerItem{
+    width: calc(100% / 3.3);
+}
+.footerItem{
+    @apply text-white;
+    h4{
+        @apply text-lg font-bold mb-4; 
+    }
+}
+
+.menuItem{
+    @apply mb-3;
+}
+.menuLinks{
+    @apply flex items-center hover:text-orange text-white;
+}
+.icon{
+    @apply text-orange mr-3;
+}
+.button{
+    @apply bg-orange p-3 hover:bg-red transition-all rounded;
 }
