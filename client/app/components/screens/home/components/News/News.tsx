@@ -1,18 +1,21 @@
 import { FC } from "react";
 import styles from "./news.module.scss";
+import { NewsItemsData } from "@/components/fakeData/news/newsData";
+import NewItemItem from "./NewItem";
 const News: FC = () => {
   return (
-    <div>
-      <h2>Новости</h2>
-      <div>
-        <div className="item">
-          <div>Image</div>
-          <div>
-            <span>20.09.2017</span>
-            <a href="#">Организационной деятельности позволяет оценить</a>
-            <p>Равным образом сложившаяся структура организации представляет собой интересный</p>
-          </div>
-        </div>
+    <div className={styles.news}>
+      <h2 className={styles.Newstitle}>Новости</h2>
+      <div className={styles.NewsFlex}>
+        {NewsItemsData.map((item) => (
+          <NewItemItem
+            date={item.date}
+            title={item.title}
+            text={item.text}
+            image={item.image}
+            key={item.id}
+          />
+        ))}
       </div>
     </div>
   );

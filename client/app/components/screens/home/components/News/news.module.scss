@@ -1,0 +1,30 @@
+.news{
+    @apply pt-10 pb-10;
+}
+.Newstitle{
+    @apply text-3xl font-bold text-center mb-10;
+}
+.NewsFlex{
+    @apply flex flex-wrap justify-between;
+}
+.item{
+    width: calc(100% / 3.2);
+    @apply shadow-2xl p-3 m-3 hover:bg-orange cursor-pointer flex items-center transition-all hover:text-white;
+    &:hover{
+        .date{
+            color: white;
+        }
+    }
+}
+.itemImage{
+    @apply mr-3
+}
+.date{
+    @apply text-orange text-xs; 
+}
+.title{
+    @apply text-base underline mb-3;
+}
+.text{
+    @apply text-sm;
+}

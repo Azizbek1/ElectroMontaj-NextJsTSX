@@ -6,6 +6,7 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import Price from "./components/Price/Price";
 import About from "./components/About/About";
 import Footer from "@/components/layout/Footer/Footer";
+import News from "./components/News/News";
 
 const Home: FC = () => {
   return (
@@ -14,8 +15,9 @@ const Home: FC = () => {
       <Dover />
       <Portfolio />
       <Price />
-      <About  />
-      <Footer  />
+      <About />
+      <News />
+      <Footer />
     </Meta>
   );
 };

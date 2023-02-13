@@ -2,11 +2,22 @@
     background: #f6f6f6;
     @apply py-10;
 }
-
+.aboutExtra{
+    @apply flex flex-wrap justify-between mx-auto;
+    max-width: 1140px;
+}
 .title{
     @apply text-3xl font-medium mb-5;
 }
-
+.aboutTitle{
+    width: calc(100% / 2);
+}
+.images{
+    width: calc(100% / 2);
+}
 .text{
     @apply text-base mb-4 text-gray-500;
+}
+.button{
+    @apply bg-orange p-3 text-white text-lg rounded hover:bg-red transition-all;
 }
