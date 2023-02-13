@@ -7,10 +7,7 @@
 .headerFlex {
 	@apply justify-center flex-wrap flex xl:container md:container container lg:container  md:justify-between items-center pt-1 pb-1 text-white;
 }
-/* ========= Slider =========  */
-.slider {
-	@apply w-full;
-}
+
 .navigation {
 	background: white;
 	@apply md:justify-end px-20;

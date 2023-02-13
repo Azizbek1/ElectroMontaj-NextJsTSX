@@ -7,8 +7,6 @@ import {
   addressPhone,
   menus,
 } from "@/components/fakeData/navigations/nav";
-import SipperSlider from "@/components/ui/swipper/Swipper";
-import { sliders } from "@/components/fakeData/sliders/slider";
 import Navbar from "./navbar/navbar";
 import MenuToogle from "@/components/ui/menutoggle/MenuToogle";
 
@@ -44,11 +42,6 @@ const Header: FC = () => {
         <div className={styles.menuToggle}>
           <MenuToogle isActive={isActive} toggle={toggle} />
         </div>
-      </div>
-
-      {/* ===================  Slider  =================== */}
-      <div className={styles.slider}>
-        <SipperSlider slide={sliders} />
       </div>
     </div>
   );

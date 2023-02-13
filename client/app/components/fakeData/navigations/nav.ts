@@ -17,7 +17,7 @@ export const menus: IMenu = {
         {
             id: 3,
             icon: 'MdRealEstateAgent',
-            link: '/services',
+            link: '/servises',
             title: 'Услуги',
         },
         {

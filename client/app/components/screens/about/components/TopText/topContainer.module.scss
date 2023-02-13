@@ -1,0 +1,38 @@
+.TopTextContainer {
+	@apply py-10 px-10;
+	h2 {
+		@apply text-3xl font-bold mb-10;
+	}
+}
+.items {
+	width: calc(100% / 2.2);
+}
+.topContainerFlex {
+	@apply flex justify-between;
+}
+.text {
+	color: #79787f;
+	@apply mb-5;
+}
+.textPim {
+	@apply border-l-2 border-solid border-orange pl-5 italic mb-10;
+	color: #79787f;
+}
+
+.primi {
+	@apply mb-5 text-2xl;
+}
+.menu {
+	@apply pl-6;
+	li {
+		@apply mb-3;
+		&::before {
+			content: '\2022';
+			@apply text-orange;
+			font-weight: bold;
+			display: inline-block;
+			width: 1em;
+			margin-left: -1em;
+		}
+	}
+}

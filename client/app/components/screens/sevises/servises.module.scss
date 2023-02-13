@@ -1,0 +1,30 @@
+.servises {
+	background: #f6f6f6;
+    @apply px-10 pb-10;
+}
+.servisesTitle{
+    @apply text-3xl mb-10 pt-10 text-center font-bold;
+}
+.servisesFlex{
+    @apply flex justify-center flex-wrap;
+}
+.item{
+    @apply  m-3 p-5 flex justify-center flex-col items-center;  
+    width: calc(100% / 3);
+    border: 1px solid rgb(186, 186, 186);
+    cursor: pointer;
+    transition: 500ms;
+    &:hover{
+        box-shadow:  0 0 10px gray;
+    }
+}
+.itemImage{
+    width: 60px;
+    height: 60px;
+    @apply bg-orange flex justify-center items-center p-2;
+    border-radius: 50%;
+}
+
+.title{
+    @apply text-base mt-5;
+}
