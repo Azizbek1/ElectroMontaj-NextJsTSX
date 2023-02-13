@@ -1,0 +1,32 @@
+.newsTitle{
+    @apply text-3xl font-bold mb-10 text-center;
+}
+.news{
+    @apply py-10 px-10;
+    background: #f0f0f0;
+}
+
+.newsFlex{
+    @apply flex flex-wrap justify-center;
+}
+.item{
+    width: calc(100% / 2.5);
+    @apply shadow-lg m-2 bg-white p-3 flex rounded hover:bg-orange transition-all cursor-pointer hover:text-white;
+    &:hover{
+        .date{
+            color: white;
+        }
+    }
+}
+.itemBox{
+    @apply ml-4;
+}
+.date{
+    @apply text-orange text-xs; 
+}
+.title{
+    @apply underline;
+}
+.text{
+    @apply text-sm;
+}
