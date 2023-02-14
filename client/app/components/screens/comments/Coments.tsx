@@ -36,18 +36,22 @@ const Coments: FC = () => {
           <h4>Написать отзыв</h4>
             <form action="">
               <div className={styles.formInputs}>
-                <input type="text" placeholder="Ведите имя" />
+                <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 ">Ведите имя</label>
+                <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Файзиев Камил" required/>
               </div>
               <div className={styles.formInputs}>
-                <input type="text" placeholder="Ведите Емаил" />
+                <label htmlFor="threE" className="block mb-2 text-sm font-medium text-gray-900 ">Ведите Емаил</label>
+                <input type="text" id="threE" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@example.com" required/>
               </div>
               <div className={styles.formInputs}>
+              <label htmlFor="threText" className="block mb-2 text-sm font-medium text-gray-900 ">Ваш отзыв</label>
                 <textarea
-                  placeholder="Ваш отзыв"
+                  placeholder="Lorem lorem ipsum dolor sit amet, consectetur adipis"
                   name=""
-                  id=""
+                  id="threText"
                   cols={30}
                   rows={10}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 ></textarea>
               </div>
               <button className={styles.button}>Отправить</button>
