@@ -1,0 +1,55 @@
+.coments{
+    @apply pb-10 pt-10 px-10;;
+    background: #f0f0f0;
+}
+.comentsTitle{
+    @apply text-3xl font-bold text-center mb-10;
+}
+
+.commnetsItems{
+    @apply m-3 shadow-md px-5 py-6 rounded bg-white;
+    border: 1px solid rgb(176, 175, 175);
+}
+.date{
+    @apply text-orange text-sm italic mb-3;
+}
+.name{
+    @apply font-bold text-lg mb-3;
+}
+.text{
+    @apply text-sm text-gray-600;
+}
+.poginations{
+    @apply pl-5;
+}
+.poginationsMenu{
+    @apply flex items-center;
+}
+.poginationsItems{
+    @apply transition-all  px-3 cursor-pointer rounded  shadow-md m-1 bg-orange text-white; 
+    &:hover{
+        @apply hover:bg-red text-white;
+    }
+}
+
+.formComments{
+    @apply py-5 px-10;
+    form{
+        @apply flex flex-col items-start;
+    }
+    h4{
+        @apply font-bold text-lg mb-6 italic;
+    }
+}
+.formInputs{
+    @apply mb-3;
+    input{
+        @apply rounded;
+    }
+}
+.fomFl{
+    @apply flex justify-around items-center;
+}
+.button{
+    @apply text-white p-3 hover:bg-red bg-orange rounded; 
+}
