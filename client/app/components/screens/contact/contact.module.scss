@@ -1,0 +1,42 @@
+.contact{
+	background: #f0f0f0;
+    @apply px-10 py-10;
+}
+.contactTitle{
+    @apply text-center  text-3xl font-bold mb-10;
+}
+.contactFlex{
+    @apply flex justify-around;
+}
+.menuItems{
+    @apply flex flex-col mb-5 pb-3;
+    border-bottom: 1px solid rgb(186, 185, 185);
+}
+.flexIcon{
+    @apply flex;
+}
+.icon{
+    @apply mr-3 text-orange;
+} 
+.rejIco{
+    @apply font-bold;
+}
+
+.formContact{
+    @apply mt-10;
+    h4{
+        @apply text-center font-normal text-lg mb-5 italic;
+    }
+}
+.inputsFlex{
+    @apply flex justify-around flex-wrap;
+}
+.inputItem{
+    @apply mb-4;
+}
+.button{
+    @apply bg-orange hover:bg-red text-white p-2 rounded transition-all;
+}
+.inputss, .inputText{
+    width: calc(100% / 3);
+}
