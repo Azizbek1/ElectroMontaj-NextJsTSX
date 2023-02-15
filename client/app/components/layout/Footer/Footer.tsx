@@ -1,8 +1,7 @@
-import { FC, useState } from "react";
 import styles from "./footer.module.scss";
 import { MaterialIcon } from "@/components/ui/icons/MaterialIcon";
 
-const Footer: FC = () => {
+const FooterLayout = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.footerFlex}>
@@ -31,4 +30,4 @@ const Footer: FC = () => {
   );
 };
 
-export default Footer;
+export default FooterLayout;
