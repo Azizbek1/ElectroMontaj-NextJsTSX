@@ -7,6 +7,7 @@ import Price from "./components/Price/Price";
 import About from "./components/About/About";
 import News from "./components/News/News";
 import Slider from "./components/Slider/Slider";
+import { Modal } from "@/components/ui/modal/Modal";
 
 const Home: FC = () => {
   return (
