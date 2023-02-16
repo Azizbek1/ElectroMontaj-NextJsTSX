@@ -7,13 +7,8 @@ import Price from "./components/Price/Price";
 import About from "./components/About/About";
 import News from "./components/News/News";
 import Slider from "./components/Slider/Slider";
-import Modal from "@/components/ui/modal/Modal";
-
 const Home: FC = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const openModal = () => {
-    setModalOpen(true);
-  };
+
   return (
     <Meta title="Электро-монтаж" description="">
       <Slider />
@@ -23,15 +18,6 @@ const Home: FC = () => {
       <Price />
       <About />
       <News />
-      <Modal
-        isOpen={modalOpen}
-        closeModal={() => {
-          setModalOpen(false);
-        }}
-      >
-        <p>asdsadasd</p>
-      </Modal>
-      <button onClick={() => openModal()}>Click</button>
     </Meta>
   );
 };
