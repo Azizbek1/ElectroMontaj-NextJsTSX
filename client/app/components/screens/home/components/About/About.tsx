@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./about.module.scss";
 import Image from "next/image";
+import { AppLinkTheme, Applink } from "@/components/elements/AppLink/Applink";
 const About: FC = () => {
   return (
     <div className={styles.about}>
@@ -28,15 +29,14 @@ const About: FC = () => {
             Задача организации, в особенности же реализация намеченных плановых
             заданий играет важную роль.
           </p>
-          <button className={styles.button}>Подробнее</button>
+          <div className={styles.appLinl}>
+            <Applink theme={AppLinkTheme.ORANGE} href={"/about"}>
+              Подробне
+            </Applink>
+          </div>
         </div>
         <div className={styles.images}>
-          <Image
-            src="/png/about-min.png"
-            alt="png"
-            width={475}
-            height={519}
-          />
+          <Image src="/png/about-min.png" alt="png" width={475} height={519} />
         </div>
       </div>
     </div>

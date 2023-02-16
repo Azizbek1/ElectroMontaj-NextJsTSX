@@ -46,3 +46,9 @@
 .button{
 	@apply border-2 px-3 py-2 bg-orange text-white rounded hover:bg-red transition-all;
 }
+.logo{
+	display: block;
+	@media (max-width: 991px) {
+		display: none;
+	}
+}

@@ -9,6 +9,8 @@ import {
 } from "@/components/fakeData/navigations/nav";
 import Navbar from "./navbar/navbar";
 import MenuToogle from "@/components/ui/menutoggle/MenuToogle";
+import Image from "next/image";
+import  logo from '@/assets/png/logo.png';
 
 const Header: FC = () => {
   const useToggle = (initial = false) => {
@@ -32,6 +34,15 @@ const Header: FC = () => {
 
       {/* ===================  Navigation  =================== */}
       <div className={styles.navigation}>
+        <div className={styles.logoMD}>
+          <Image
+            src={logo}
+            width={120}
+            height={40}
+            alt="Электро Монтаж"
+            draggable={false}
+          />
+        </div>
         <div
           className={cn(styles.navbar__row, styles.hidden_menu, {
             [styles.hidden_menu_active]: isActive,

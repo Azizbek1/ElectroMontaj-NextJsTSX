@@ -11,11 +11,8 @@
         object-fit: cover;
     }
 }
-.title{
-    @apply font-bold text-white text-3xl tracking-widest uppercase mb-3;
-}
 .text{
-    @apply font-normal text-white text-2xl;
+   
 }
 .absolyute{
     position: absolute;

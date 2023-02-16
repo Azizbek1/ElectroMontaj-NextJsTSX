@@ -1,0 +1,21 @@
+.h1 {
+	@apply font-bold text-white sm:text-xl text-center md:text-2xl lg:text-3xl tracking-widest uppercase mb-3;
+}
+
+.h2 {
+	margin: 0;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 30px;
+}
+
+.h3 {
+	margin: 0;
+
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 27px;
+}
+.h4{
+	@apply  font-normal text-white text-base sm:text-sm md:text-lg lg:text-2xl;
+}

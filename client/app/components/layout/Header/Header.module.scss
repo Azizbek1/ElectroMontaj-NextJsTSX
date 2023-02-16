@@ -11,13 +11,24 @@
 .navigation {
 	background: white;
 	@apply md:justify-end px-20;
+	position: relative;
+	@media (max-width: 991px) {
+		height: 60px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	z-index: 99;
 }
 .hidden_menu {
+	width: 100%;
 	@media (max-width: 991px) {
 		ul {
 			flex-direction: column;
 			ul {
-				flex-direction: column;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
 			}
 			button {
 				display: none;
@@ -27,6 +38,11 @@
 		&_active {
 			display: block;
 			opacity: 1;
+			background: white;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
 		}
 	}
 }
@@ -35,6 +51,14 @@
 	@media (max-width: 991px) {
 		display: flex;
 		justify-content: flex-end;
-		padding: 10px 20px 10px 0;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+}
+.logoMD{
+	display: none;
+	@media (max-width: 991px) {
+		display: block;
 	}
 }

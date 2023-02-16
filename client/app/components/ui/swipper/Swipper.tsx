@@ -7,6 +7,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from "next/image";
 
 import styles from "./swiper.module.scss";
+import { Htag } from "@/components/elements/Htag/Htag";
 const SipperSlider = ({ slide }: any) => {
   return (
     <>
@@ -26,8 +27,8 @@ const SipperSlider = ({ slide }: any) => {
           <SwiperSlide key={index}>
             <div className={styles.slider}>
               <div className={styles.absolyute}>
-                <h1 className={styles.title}>{item.title}</h1>
-                <p className={styles.text}>{item.text}</p>
+                <Htag tag="h1">{item.title}</Htag>
+                <Htag tag="h4">{item.text}</Htag>
               </div>
               <div className={styles.images}>
                 <Image
