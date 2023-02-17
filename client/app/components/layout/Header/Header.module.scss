@@ -2,10 +2,10 @@
 	@apply bg-white;
 }
 .center {
-	@apply px-20  bg-gray-700;
+	@apply px-20 py-2  bg-gray-700;
 }
 .headerFlex {
-	@apply justify-center flex-wrap flex xl:container md:container container lg:container  md:justify-between items-center pt-1 pb-1 text-white;
+	@apply justify-center flex-wrap flex md:justify-between items-center  text-white;
 }
 
 .navigation {

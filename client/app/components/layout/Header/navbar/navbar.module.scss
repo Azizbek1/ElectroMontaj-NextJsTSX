@@ -1,5 +1,5 @@
 .menu {
-	@apply flex xl:container md:container sm:container lg:container  mx-auto container  justify-between items-center  p-3 animate-fade;
+	@apply flex justify-between items-center  animate-fade;
     li{
 		&:hover{
 			a{
@@ -40,15 +40,19 @@
 	}
 }
 .itemsMenu{
-	@apply flex;
+	@apply flex items-center;
 }
-
+.buttons{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+}
 .button{
-	@apply border-2 px-3 py-2 bg-orange text-white rounded hover:bg-red transition-all;
+	@apply border-2 px-2 py-1 bg-orange text-white rounded hover:bg-red transition-all;
 }
 .logo{
 	display: block;
-	@media (max-width: 991px) {
+	@media (max-width: 992px) {
 		display: none;
 	}
 }

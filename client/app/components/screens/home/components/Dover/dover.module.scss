@@ -3,7 +3,7 @@
 	background-position: 50% bottom;
 	background-repeat: no-repeat;
 	background-color: #f6f6f6;
-	padding: 70px 0 260px;
+	@apply px-5 sm:px-20 py-20;
 }
 .doverTitle {
 	@apply text-center text-3xl mb-5 font-bold;
@@ -12,7 +12,7 @@
 	@apply flex-wrap inline-flex justify-around;
 }
 .item{
-	@apply w-3/12 flex bg-white p-5 rounded m-2;
+	@apply flex bg-white p-5 rounded m-2;
 }
 .itemImage{
 	@apply mr-3;

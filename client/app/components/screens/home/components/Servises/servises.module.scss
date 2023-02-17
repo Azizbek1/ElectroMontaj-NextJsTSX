@@ -6,13 +6,13 @@
 	text-transform: uppercase;
 }
 .servises {
-	@apply bg-white pt-10 pb-10;
+	@apply px-5  pt-10 pb-10 bg-grey;
 }
 .item {
 	width: calc(100% / 3.5);
-	@apply shadow-lg mt-5  border-2 border-gray-300 bg-white flex items-center justify-center flex-col p-5 rounded;
+	@apply bg-white shadow-lg mt-5  border-2 border-gray-300  flex items-center justify-center flex-col p-5 rounded;
 	@media (max-width: 991px) {
-		width: calc(1140px / 2.8);
+		width: calc(1140px / 3);
 	}
 	@media (max-width: 576px) {
 		width: calc(100%);
