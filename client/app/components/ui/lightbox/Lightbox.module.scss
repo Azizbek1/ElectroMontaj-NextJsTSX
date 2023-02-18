@@ -1,10 +1,44 @@
-.close{
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(79, 79, 79, 0.647);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 999;
 }
-.overlay{
+.close {
+	position: relative;
 }
-.leftIcon{
+.iconsFlex {
+	display: flex;
+    @apply bg-orange rounded;
 }
-.rightIcon{
+.iconClose {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: white;
+	font-size: 45px;
+	cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    transition: 500ms all;
+    &:hover{
+        @apply bg-orange;
+    }
 }
-.arrows{
+.leftIcon {
+	color: white;
+	font-size: 45px;
+	cursor: pointer;
+}
+.rightIcon {
+	color: white;
+	font-size: 45px;
+	cursor: pointer;
 }

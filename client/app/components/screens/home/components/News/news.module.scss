@@ -6,18 +6,27 @@
 }
 .NewsFlex{
     @apply flex flex-wrap justify-between;
+    @media (max-width: 991px) {
+       justify-content: center;
+    }
 }
 .item{
-    width: calc(100% / 3.2);
+    width: calc(100% / 3.3);
     @apply shadow-2xl p-3 m-3 hover:bg-orange cursor-pointer flex items-center transition-all hover:text-white;
     &:hover{
         .date{
             color: white;
         }
     }
+    @media (max-width: 991px) {
+        width: auto;
+    }
 }
 .itemImage{
-    @apply mr-3
+    @apply mr-3;
+    @media (max-width: 576px) {
+        display: none;
+    }
 }
 .date{
     @apply text-orange text-xs; 

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const PortfolioItem = (props: any) => {
   return (
-    <div className={styles.item} key={props.id}>
+    <div className={styles.item} key={props.id} onClick={() => props.handleClick(props, props.schet)}>
       <div className={styles.itemImage}>
         <div className={styles.hoverOverlay}>
           <div className={styles.icon}>
@@ -12,7 +12,6 @@ const PortfolioItem = (props: any) => {
           </div>
         </div>
         <Image
-          onClick={() => props.handleClick(props, props.schet)}
           src={`${props.image}`}
           alt="jpg"
           width={500}

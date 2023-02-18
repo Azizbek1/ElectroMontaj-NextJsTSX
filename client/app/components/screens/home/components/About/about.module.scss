@@ -1,6 +1,6 @@
 .about{
     background: #f6f6f6;
-    @apply py-10;
+    @apply py-10 px-10;
 }
 .aboutExtra{
     @apply flex flex-wrap justify-between mx-auto;
@@ -11,9 +11,19 @@
 }
 .aboutTitle{
     width: calc(100% / 2);
+    @media (max-width: 991px) {
+         width: auto;   
+    }
 }
 .images{
     width: calc(100% / 2);
+    @media (max-width: 992px) {
+        width: 100%; 
+   }
+    text-align: center;
+    @media (max-width: 768px) {
+        display: none;   
+   }
 }
 .text{
     @apply text-base mb-4 text-gray-500;

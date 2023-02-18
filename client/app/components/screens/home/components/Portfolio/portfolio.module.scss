@@ -10,6 +10,9 @@
 }
 .portfolioFLex{
     @apply flex flex-wrap justify-between p-10;
+    @media (max-width: 992px) {
+        justify-content: space-around;
+    }
     
 }
 .hr{
@@ -21,9 +24,27 @@
 }
 .item{
     @apply  m-3 bg-white rounded shadow-md;
-    width: calc(100% / 4.3);
+    width: calc(100% / 4.5);
+    cursor: pointer;
+    &:hover .itemBox{
+        transition: 500ms all;
+        @apply bg-orange text-white;
+    }
+    &:hover .itemBox .text{
+        transition: 500ms all;
+        @apply  text-white;
+    }
     &:hover .hoverOverlay{
         transform: scale(1);
+    }
+    @media (max-width: 992px) {
+        width: calc(100% / 2.9);
+    }
+    @media (max-width: 768px) {
+        width: calc(100% / 2.2);
+    }
+    @media (max-width: 576px) {
+        width: 100%;
     }
 }
 .itemBox{
@@ -44,6 +65,7 @@
 .itemImage{
     position: relative;
 }
+
 .hoverOverlay{
     position: absolute;
     top: 0;
@@ -54,4 +76,12 @@
     z-index: 66;
     transform: scale(0);
     transition: 500ms all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.icon{
+    color: white;
+    font-size: 65px;
 }

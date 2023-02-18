@@ -1,17 +1,25 @@
 .priceTitle {
-	@apply tracking-wide text-center text-3xl mb-5 font-bold mb-12;
+	@apply tracking-wide text-center text-3xl  font-bold mb-12;
 }
 .price {
 	@apply py-10;
 }
 .flexItem {
-	@apply flex justify-center;
+	@apply flex justify-center flex-wrap;
 }
 .item {
 	@apply w-80 text-center rounded;
 	border: 1px solid rgba(128, 128, 128, 0.674);
+	@media (max-width: 991px) {
+		margin: 10px;
+	}
 	&:nth-child(2) {
 		transform: translateY(-20px);
+	}
+	@media (max-width: 991px) {
+		&:nth-child(2) {
+			transform: translateY(0px);
+		}
 	}
 	h3 {
 		@apply rounded rounded-b-none p-4 text-white text-xl font-bold bg-orange mb-3;

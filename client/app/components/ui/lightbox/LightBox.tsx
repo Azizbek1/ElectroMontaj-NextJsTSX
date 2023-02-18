@@ -8,25 +8,27 @@ const LightBox = ({
   handelRotationLeft,
 }: any) => {
   const handleClick = (e: any) => {
-    if (e.target.classList.contains("dismiss")) {
-      setClickedImg(null);
-    }
+      setClickedImg(false);
   };
 
   return (
-    <div className={styles.overlay} onClick={handleClick}>
-      <Image src={clickedImg} alt="bigger pic" width={500} height={330} />
-      <div className={styles.close} onClick={handleClick}>
-        <MaterialIcon name="MdOutlineClear" />
-      </div>
-      <div onClick={handelRotationLeft} className={styles.arrows}>
-        <div className={styles.leftIcon}>
-          <MaterialIcon name="MdChevronLeft" />
+    <div className={styles.overlay}>
+      <div className={styles.close}>
+        <Image src={clickedImg} alt="bigger pic" width={500} height={330} />
+        <div className={styles.iconClose}  onClick={handleClick}>
+          <MaterialIcon name="MdOutlineClear" />
         </div>
       </div>
-      <div onClick={handelRotationRight} className={styles.arrows}>
-        <div className={styles.rightIcon}>
-          <MaterialIcon name="MdChevronRight" />
+      <div className={styles.iconsFlex}>
+        <div onClick={handelRotationLeft} className={styles.arrows}>
+          <div className={styles.leftIcon}>
+            <MaterialIcon name="MdChevronLeft" />
+          </div>
+        </div>
+        <div onClick={handelRotationRight} className={styles.arrows}>
+          <div className={styles.rightIcon}>
+            <MaterialIcon name="MdChevronRight" />
+          </div>
         </div>
       </div>
     </div>
