@@ -2,12 +2,10 @@
     @apply pb-10 pt-10 bg-gray-700;
 }
 .footerFlex{
-    @apply px-10;
-    display: flex;
-    justify-content: space-between;
+    @apply px-10 flex justify-between flex-wrap;
 }
 .footerItem{
-    width: calc(100% / 3.3);
+    @apply mb-5;
 }
 .footerItem{
     @apply text-white;

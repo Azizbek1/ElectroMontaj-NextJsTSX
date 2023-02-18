@@ -6,9 +6,15 @@
 }
 .items {
 	width: calc(100% / 2.2);
+	@media (max-width: 991px) {
+		width: calc(100% / 2);
+	}
+	@media (max-width: 768px) {
+		width: calc(100% / 1);
+	}
 }
 .topContainerFlex {
-	@apply flex justify-between;
+	@apply flex justify-between flex-wrap;
 }
 .text {
 	color: #79787f;
