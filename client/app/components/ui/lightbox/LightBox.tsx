@@ -1,43 +1,36 @@
-import React, { ReactElement, useState } from "react";
-import Lightbox from "react-image-lightbox";
-import 'react-image-lightbox/style.css';
-interface Props {}
-const images = [
-  "https://i.imgur.com/fsyrScY.jpg",
-  "https://www.youtube.com/watch?v=3nQNiWdeH2Q",
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-];
-export default function LightBox({}: Props): ReactElement {
-  const [toggler, setToggler] = useState<boolean>(false);
-  const [photoIndex, photoIndexToggler] = useState({ photoIndex: 0 });
-  const [isOpen, setOpen] = useState({ isOpen: false });
+import Image from "next/image";
+import styles from "./Lightbox.module.scss";
+import { MaterialIcon } from "../icons/MaterialIcon";
+const LightBox = ({
+  clickedImg,
+  setClickedImg,
+  handelRotationRight,
+  handelRotationLeft,
+}: any) => {
+  const handleClick = (e: any) => {
+    if (e.target.classList.contains("dismiss")) {
+      setClickedImg(null);
+    }
+  };
 
   return (
-    <div>
-      <button type="button" onClick={() => setOpen({ isOpen: true })}>
-        Open Lightbox
-      </button>
-      {isOpen.isOpen && (
-        <Lightbox
-          mainSrc={images[photoIndex.photoIndex]}
-          nextSrc={images[(photoIndex.photoIndex + 1) % images.length]}
-          prevSrc={
-            images[(photoIndex.photoIndex + images.length - 1) % images.length]
-          }
-          onCloseRequest={() => setOpen({ isOpen: false })}
-          onMovePrevRequest={() =>
-            photoIndexToggler({
-              photoIndex:
-                (photoIndex.photoIndex + images.length - 1) % images.length,
-            })
-          }
-          onMoveNextRequest={() =>
-            photoIndexToggler({
-              photoIndex: (photoIndex.photoIndex + 1) % images.length,
-            })
-          }
-        />
-      )}
+    <div className={styles.overlay} onClick={handleClick}>
+      <Image src={clickedImg} alt="bigger pic" width={500} height={330} />
+      <div className={styles.close} onClick={handleClick}>
+        <MaterialIcon name="MdOutlineClear" />
+      </div>
+      <div onClick={handelRotationLeft} className={styles.arrows}>
+        <div className={styles.leftIcon}>
+          <MaterialIcon name="MdChevronLeft" />
+        </div>
+      </div>
+      <div onClick={handelRotationRight} className={styles.arrows}>
+        <div className={styles.rightIcon}>
+          <MaterialIcon name="MdChevronRight" />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default LightBox;

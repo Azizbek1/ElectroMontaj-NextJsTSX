@@ -22,6 +22,9 @@
 .item{
     @apply  m-3 bg-white rounded shadow-md;
     width: calc(100% / 4.3);
+    &:hover .hoverOverlay{
+        transform: scale(1);
+    }
 }
 .itemBox{
     @apply p-4 text-center;
@@ -37,4 +40,18 @@
     button{
         @apply bg-orange p-4 rounded text-white hover:bg-red; 
     }
+}
+.itemImage{
+    position: relative;
+}
+.hoverOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.455);
+    z-index: 66;
+    transform: scale(0);
+    transition: 500ms all;
 }
