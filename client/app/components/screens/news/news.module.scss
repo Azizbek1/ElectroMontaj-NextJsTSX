@@ -10,12 +10,17 @@
     @apply flex flex-wrap justify-center;
 }
 .item{
-    width: calc(100% / 2.5);
+    width: calc(1140px / 2.5);
     @apply shadow-lg m-2 bg-white p-3 flex rounded hover:bg-orange transition-all cursor-pointer hover:text-white;
     &:hover{
         .date{
             color: white;
         }
+    }
+}
+.itemImage{
+    @media (max-width: 420px) {
+        display: none;
     }
 }
 .itemBox{

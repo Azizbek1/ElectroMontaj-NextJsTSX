@@ -13,9 +13,8 @@ const Contact: FC = () => {
               <li className={styles.menuItems}>
                 <span className={styles.flexIcon}>
                   <span className={styles.icon}>
-                    {" "}
-                    <MaterialIcon name="MdCall" />{" "}
-                  </span>{" "}
+                    <MaterialIcon name="MdCall" />
+                  </span>
                   <span className={styles.rejIco}>Адрес:</span>
                 </span>
                 <p>г. Москва, ул. Калужская, 80, офис 315</p>
@@ -23,9 +22,8 @@ const Contact: FC = () => {
               <li className={styles.menuItems}>
                 <span className={styles.flexIcon}>
                   <span className={styles.icon}>
-                    {" "}
-                    <MaterialIcon name="MdCall" />{" "}
-                  </span>{" "}
+                    <MaterialIcon name="MdCall" />
+                  </span>
                   <span className={styles.rejIco}>Телефоны:</span>
                 </span>
                 <p>+998 (90) 999 99 99</p>
@@ -34,9 +32,8 @@ const Contact: FC = () => {
               <li className={styles.menuItems}>
                 <span className={styles.flexIcon}>
                   <span className={styles.icon}>
-                    {" "}
-                    <MaterialIcon name="MdCall" />{" "}
-                  </span>{" "}
+                    <MaterialIcon name="MdCall" />
+                  </span>
                   <span className={styles.rejIco}>E-mail:</span>
                 </span>
                 <a href="#">electro@gmail.com</a>
@@ -44,9 +41,8 @@ const Contact: FC = () => {
               <li className={styles.menuItems}>
                 <span className={styles.flexIcon}>
                   <span className={styles.icon}>
-                    {" "}
-                    <MaterialIcon name="MdCall" />{" "}
-                  </span>{" "}
+                    <MaterialIcon name="MdCall" />
+                  </span>
                   <span className={styles.rejIco}>Режим работы:</span>
                 </span>
                 <p>Пн - Пт: c 8.00 - 19.00 Сб - Вс: c 9.00 - 15.00</p>
@@ -92,12 +88,19 @@ const Contact: FC = () => {
                       placeholder="Телефон"
                     />
                   </div>
-                  <button className={styles.button}>Отправить</button>
+                  
                 </div>
                 <div className={styles.inputText}>
-                    <textarea placeholder="Ваше Сообшения"   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" cols={30} rows={10}></textarea>
-                </div>  
+                  <textarea
+                    placeholder="Ваше Сообшения"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name=""
+                    cols={30}
+                    rows={10}
+                  ></textarea>
+                </div>
               </div>
+              <button className={styles.button}>Отправить</button>
             </form>
           </div>
         </div>

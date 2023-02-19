@@ -6,7 +6,7 @@
     @apply text-center  text-3xl font-bold mb-10;
 }
 .contactFlex{
-    @apply flex justify-around;
+    @apply flex justify-around flex-wrap;
 }
 .menuItems{
     @apply flex flex-col mb-5 pb-3;
@@ -28,8 +28,12 @@
         @apply text-center font-normal text-lg mb-5 italic;
     }
 }
+.from{
+    max-width: 1140px;
+    margin: auto;
+}
 .inputsFlex{
-    @apply flex justify-around flex-wrap;
+    @apply flex justify-between flex-wrap;
 }
 .inputItem{
     @apply mb-4;
@@ -38,6 +42,10 @@
     @apply bg-orange hover:bg-red text-white p-2 rounded transition-all;
 }
 .inputss, .inputText{
+    @media (max-width: 768px) {
+        width: auto;
+        margin-bottom: 10px;
+    }
     width: calc(100% / 3);
 }
 

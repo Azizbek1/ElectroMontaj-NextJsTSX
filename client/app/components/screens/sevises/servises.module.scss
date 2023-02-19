@@ -9,7 +9,10 @@
 }
 .item{
     @apply  m-3 p-5 flex justify-center flex-col items-center;  
-    width: calc(100% / 3);
+    width: calc(1140px / 2.5);
+    @media (max-width: 991px) {
+        width: auto;
+    }
     border: 1px solid rgb(186, 186, 186);
     cursor: pointer;
     transition: 500ms;
