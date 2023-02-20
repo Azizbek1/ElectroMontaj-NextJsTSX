@@ -9,6 +9,11 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 
 
+// ====  Routes  ====  //
+const AuthRoutes = require('./routes/auth.routes')
+const SharedRoutes = require('./routes/shared.routes')
+
+
 const app = express();
 
 
@@ -20,6 +25,12 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+
+
+app.use('/api', AuthRoutes)
+app.use('/api', SharedRoutes)
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
