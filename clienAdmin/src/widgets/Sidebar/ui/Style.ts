@@ -9,4 +9,5 @@ export default styled.div`
   width: ${sidebar_width};
   position: relative;
   transition: width 0.3s;
+  border-right: 1px solid rgba(5, 5, 5, 0.06);
 `;

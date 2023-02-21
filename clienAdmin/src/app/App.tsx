@@ -3,6 +3,7 @@ import { PageLoader } from "@/widgets/PageLoader/PageLoader";
 import { AppRouter } from "./providers/router";
 import { Sidebar } from "@/widgets/Sidebar";
 import { Navbar } from "@/widgets/Navbar";
+import { Footer } from "@/widgets/Footer";
 function App() {
   return (
     <Suspense fallback={<PageLoader />}>
@@ -11,6 +12,7 @@ function App() {
         <Sidebar />
         <AppRouter />
       </div>
+      <Footer/>
     </Suspense>
   );
 }
