@@ -20,7 +20,9 @@ function SiginPage() {
     control,
   });
 
-  const onSubmit: SubmitHandler<ISignInForm> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ISignInForm> = (data) => {
+    console.log(data);
+  };
   return (
     <SiginPageStyled>
       <div className="auth-form">
