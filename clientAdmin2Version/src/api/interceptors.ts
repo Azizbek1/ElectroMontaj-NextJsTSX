@@ -15,7 +15,6 @@ instance.interceptors.request.use((config: any) => {
 	const accessToken = "Cookie"
 	if (config.headers)
 		config.headers.Authorization = `Bearer ${accessToken}`
-
 	return config
 })
 
