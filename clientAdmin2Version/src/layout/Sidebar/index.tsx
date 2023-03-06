@@ -4,6 +4,7 @@ import type { MenuProps } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { items } from './sidebarMenu';
 import SiderbarStyled from './Style'
+import { removeLocalStorage } from 'src/settings/localstorage/localStorage';
 const { Sider } = Layout;
 
 function Sidebar(): ReactElement {
@@ -17,6 +18,10 @@ function Sidebar(): ReactElement {
     // onClick MenuSidebar 
     const onClick: MenuProps['onClick'] = ({ key }) => {
         if (key === 'sigout') {
+            // СДЕЛАТЬ / функция выхода здесь 
+            removeLocalStorage('status')
+            removeLocalStorage('isAuth')
+            removeLocalStorage('user-session')
             navigate('/')
             window.location.reload()
         } else {

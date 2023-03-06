@@ -9,6 +9,7 @@ import {
   FundViewOutlined,
   TableOutlined,
   AlignCenterOutlined,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import { MenuProps, Tooltip } from "antd";
 
@@ -43,4 +44,5 @@ export const items: MenuProps["items"] = [
   getItem("новости", 4, <AreaChartOutlined />),
   getItem("отзывы", 5, <CommentOutlined />),
   getItem("контакты", 6, <FundOutlined />),
+  getItem("Выйти", 'sigout', <ExclamationCircleOutlined />, true),
 ];

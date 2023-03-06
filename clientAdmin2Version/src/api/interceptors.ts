@@ -1,52 +1,33 @@
-import axios from 'axios'
-import { errorCatch } from './api.helpers'
-import { API_URL } from './configs/api.config';
-import { AuthService } from 'services/auth/auth.service';
-import { removeTokensStorage } from 'services/auth/auth.helper';
+import axios from "axios";
+import { API_URL } from "./configs/api.config";
+import {
+  setLocalStorage,
+} from "src/settings/localstorage/localStorage";
+const api = axios.create({
+  baseURL: API_URL,
+});
 
-const instance = axios.create({
-	baseURL: API_URL,
-	headers: {
-		'Content-Type': 'application/json',
-	},
-})
+api.interceptors.request.use(
+  (config: any) => {
+    
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+// Handle errors of all responses
+api.interceptors.response.use(
+  (response) => {
+    const { headers } = response;
+    const session = headers[import.meta.env.VITE_APP_SESSION_KEY];
+    if (session) setLocalStorage(import.meta.env.VITE_APP_SESSION_KEY, session);
+    return response;
+  },
+  (err) => {
+    // Erro network
+    console.log(err);
+  }
+);
 
-instance.interceptors.request.use((config: any) => {
-	const accessToken = "Cookie"
-	if (config.headers)
-		config.headers.Authorization = `Bearer ${accessToken}`
-	return config
-})
-
-instance.interceptors.response.use(
-	(config: any) => config,
-	async (error: any) => {
-		const originalRequest = error.config
-		if (
-			(error.response.status === 401 ||
-				errorCatch(error) === 'jwt expired' ||
-				errorCatch(error) === 'jwt must be provided') &&
-			error.config &&
-			!error.config._isRetry
-		) {
-			originalRequest._isRetry = true
-			try {
-				await AuthService.getNewTokens()
-
-				return instance.request(originalRequest)
-			} catch (e) {
-				if (errorCatch(e) === 'jwt expired') removeTokensStorage()
-			}
-		}
-		throw error
-	}
-)
-
-export default instance
-
-export const axiosClassic = axios.create({
-	baseURL: API_URL,
-	headers: {
-		'Content-Type': 'application/json',
-	},
-})
+export default api;
