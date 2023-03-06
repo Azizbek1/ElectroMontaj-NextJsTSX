@@ -1,14 +1,16 @@
 import axios from 'axios'
+import { API_URL, getUsersUrl } from 'src/api/configs/api.config'
 
 export const AuthService = {
-	async login(email: string, password: string) {
+	async login(login: string, password: string) {
 		const response = await axios.post(
-			`https://27.u6964.xvest3.ru/api/user/login`,
+			`${API_URL}${getUsersUrl("/login")}`,
 			{
-				email,
+				login,
 				password,
 			}
 		)
+		
 		return response
 	},
 }

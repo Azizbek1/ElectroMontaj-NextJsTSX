@@ -9,19 +9,28 @@ import {
 } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { loginValidation, passwordValidation } from "./Sigin.validate";
-import { Button } from "@mui/material";
+import { LoadingButton } from '@mui/lab';
 import { ISignInForm } from "./Sigin.props";
+import { useActions } from "src/hooks/useActions";
+import { useAuth } from "src/hooks/useAuth";
+import { setIsAuth, setIsStatus } from "src/store/Dispatch";
+
 
 
 
 function SiginPage() {
-  const { handleSubmit, control } = useForm<ISignInForm>();
+  const { handleSubmit, control, reset } = useForm<ISignInForm>();
   const { errors } = useFormState({
     control,
   });
+  const { isLoading } = useAuth()
 
+	const { login} = useActions()
   const onSubmit: SubmitHandler<ISignInForm> = (data) => {
-    console.log(data);
+    login(data)
+    setIsAuth('admin')
+    setIsStatus(true)
+    reset()
   };
   return (
     <SiginPageStyled>
@@ -67,7 +76,8 @@ function SiginPage() {
               />
             )}
           />
-          <Button
+          <LoadingButton
+            loading={isLoading}
             type="submit"
             variant="contained"
             fullWidth={true}
@@ -77,7 +87,7 @@ function SiginPage() {
             }}
           >
             Войти
-          </Button>
+          </LoadingButton>
         </form>
       </div>
     </SiginPageStyled>
