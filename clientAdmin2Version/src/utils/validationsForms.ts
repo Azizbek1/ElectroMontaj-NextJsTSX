@@ -10,10 +10,10 @@
 //   },
 // };
 
-// interface IValidate {
-//   required: string;
-//   validate: (value: string) => boolean | string;
-// }
+interface IValidate {
+  required: string;
+  validate: (value: string) => boolean | string;
+}
 export const MenuValidation: IValidate = {
   required: "Обязательно для заполнения",
   validate: (value) => {
