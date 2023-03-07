@@ -27,7 +27,6 @@ function UploadImage({ imageUrl, className, onChange }: Props) {
     if (!files) {
       return;
     }
-    console.log(e.target.files[0]);
     setImgUrl(URL.createObjectURL(files[0]));
     onChange(files[0]);
   };
@@ -41,7 +40,7 @@ function UploadImage({ imageUrl, className, onChange }: Props) {
         Загрузить картинку
       </Button>
       <input
-      style={{display : "none"}}
+        style={{display : "none"}}
         className="img-input"
         type="file"
         ref={fileRef}

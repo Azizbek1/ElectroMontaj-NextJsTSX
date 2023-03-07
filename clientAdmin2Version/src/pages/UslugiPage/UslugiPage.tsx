@@ -1,25 +1,15 @@
-import { ChangeEvent, Fragment, useRef, useState } from "react";
-import {
-  Controller,
-  SubmitHandler,
-  useForm,
-  useFormState,
-} from "react-hook-form";
-import SliderPageStyled from "./Style";
-import { ISliderAdd } from "./Slider.props";
-import { SliderValidation } from "./Validate.menu";
-import { Button, TextField } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import UploadImage from "src/components/FileUpload";
+import React, { ReactElement } from "react";
 
-function SliderPage() {
+interface Props {}
+
+export default function UslugiPage({}: Props): ReactElement {
   const { handleSubmit, control, reset } = useForm<ISliderAdd>();
   const [file, setFile] = useState<File>();
   const { errors } = useFormState({
     control,
   });
   const onSubmit: SubmitHandler<ISliderAdd> = (data: ISliderAdd) => {
-    console.log(data)
+    console.log(data);
     reset();
   };
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,8 +19,7 @@ function SliderPage() {
   };
   const uploadInputRef = useRef(null);
   return (
-    <SliderPageStyled>
-      <h2>SliderPage</h2>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Fragment></Fragment>
         <Controller
@@ -73,7 +62,7 @@ function SliderPage() {
           control={control}
           name="url"
           render={({ field }) => (
-           <UploadImage  onChange={(e) => field.onChange(e)} />
+            <UploadImage onChange={(e) => field.onChange(e)} />
           )}
         />
 
@@ -89,8 +78,6 @@ function SliderPage() {
           Добавить
         </LoadingButton>
       </form>
-    </SliderPageStyled>
+    </div>
   );
 }
-
-export default SliderPage;

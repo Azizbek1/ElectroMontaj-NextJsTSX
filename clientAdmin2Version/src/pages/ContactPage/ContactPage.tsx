@@ -1,42 +1,30 @@
-import { ChangeEvent, Fragment, useRef, useState } from "react";
-import {
-  Controller,
-  SubmitHandler,
-  useForm,
-  useFormState,
-} from "react-hook-form";
-import SliderPageStyled from "./Style";
-import { ISliderAdd } from "./Slider.props";
-import { SliderValidation } from "./Validate.menu";
-import { Button, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { TextField } from "@mui/material";
+import React, { ChangeEvent, ReactElement, useRef, useState } from "react";
+import { Controller, SubmitHandler, useForm, useFormState } from "react-hook-form";
 import UploadImage from "src/components/FileUpload";
 
-function SliderPage() {
-  const { handleSubmit, control, reset } = useForm<ISliderAdd>();
-  const [file, setFile] = useState<File>();
+interface Props {}
+
+export default function ContactPage({}: Props): ReactElement {
+  const { handleSubmit, control, reset } = useForm();
+  const [file, setFile] = useState();
   const { errors } = useFormState({
     control,
   });
-  const onSubmit: SubmitHandler<ISliderAdd> = (data: ISliderAdd) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<any> = (data: any) => {
+    console.log(data);
     reset();
   };
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
   };
   const uploadInputRef = useRef(null);
   return (
-    <SliderPageStyled>
-      <h2>SliderPage</h2>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Fragment></Fragment>
         <Controller
           control={control}
           name="name"
-          rules={SliderValidation}
           render={({ field }) => (
             <TextField
               label="Добавить Загаловку"
@@ -54,7 +42,6 @@ function SliderPage() {
         <Controller
           control={control}
           name="slogan"
-          rules={SliderValidation}
           render={({ field }) => (
             <TextField
               label="Добавить текст"
@@ -73,7 +60,7 @@ function SliderPage() {
           control={control}
           name="url"
           render={({ field }) => (
-           <UploadImage  onChange={(e) => field.onChange(e)} />
+            <UploadImage onChange={(e) => field.onChange(e)} />
           )}
         />
 
@@ -89,8 +76,6 @@ function SliderPage() {
           Добавить
         </LoadingButton>
       </form>
-    </SliderPageStyled>
+    </div>
   );
 }
-
-export default SliderPage;
