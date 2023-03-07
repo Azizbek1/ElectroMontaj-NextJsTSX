@@ -1,5 +1,3 @@
-import { Camera } from "assets/images";
-import Wrapper from "components/Wrapper";
 import { ChangeEvent, useRef, useState } from "react";
 import StyledImage from "./Style";
 import { Button } from "antd";
