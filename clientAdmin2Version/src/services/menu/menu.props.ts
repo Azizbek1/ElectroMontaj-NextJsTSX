@@ -1,5 +1,5 @@
 export interface IMenuCreate {
-  name: string;
-  url: string;
-  icon: string;
+  name?: string;
+  url?: string;
+  icon?: string;
 }

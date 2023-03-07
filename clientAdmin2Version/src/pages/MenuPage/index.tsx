@@ -19,21 +19,12 @@ function MenuPage() {
   const { handleSubmit, control, reset } = useForm<IMenuAdd>();
 
       // Api cols 
-  const { mutate, isLoading } = useApiMutation("https://27.u6964.xvest3.ru/api/menus/header/create")
 
   const { errors } = useFormState({
     control,
   });
   const onSubmit:SubmitHandler<IMenuAdd> = (data: IMenuAdd) => {
-    console.log(data);
-    // mutate(data, {
-    //   onSuccess: (data) => {
-    //     console.log(data);
-    //   },
-    //   onError: ({error}) => {
-    //     console.log(error);
-    //   }
-    // })
+    const {name, url, icon} = data
     reset()
   };
 
@@ -46,7 +37,7 @@ function MenuPage() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
               control={control}
-              name="menu"
+              name="name"
               rules={MenuValidation}
               render={({ field }) => (
                 <TextField
@@ -57,8 +48,8 @@ function MenuPage() {
                   size="small"
                   margin="normal"
                   className="auth-form__input"
-                  error={!!errors?.menu?.message}
-                  helperText={errors?.menu?.message}
+                  error={!!errors?.name?.message}
+                  helperText={errors?.name?.message}
                 />
               )}
             />

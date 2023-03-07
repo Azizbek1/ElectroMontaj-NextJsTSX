@@ -21,11 +21,12 @@ const useApi = <Data = any, Error = any>(
 
 const useApiMutation = <Variables = any, Response = any, Error = any>(
     method: string,
-    options: UseMutationOptions<AxiosResponse<Response>, Error, Variables> = {}
+    options: UseMutationOptions<AxiosResponse<Response>, Error, Variables> = {},
+    url: string,
 ) =>
     useMutation<AxiosResponse<Response>, Error, Variables>(
         (params) => {
-            const response = api.post("/", { method, params });
+            const response = api.post(url, { method, params });
             return response;
         },
         { ...options }

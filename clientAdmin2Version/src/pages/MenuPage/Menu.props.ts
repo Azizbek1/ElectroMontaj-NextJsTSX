@@ -1,5 +1,5 @@
 export interface IMenuAdd {
-    menu? : string
-    key? : string
+    name? : string
+    url? : string
     icon? : string
 }

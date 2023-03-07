@@ -27,6 +27,7 @@ function UploadImage({ imageUrl, className, onChange }: Props) {
     if (!files) {
       return;
     }
+    console.log(files[0]);
     setImgUrl(URL.createObjectURL(files[0]));
     onChange(files[0]);
   };
