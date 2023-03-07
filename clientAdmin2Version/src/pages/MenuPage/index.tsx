@@ -10,27 +10,38 @@ import {
 import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { IMenuAdd } from "./Menu.props";
-import { MenuValidation } from "./Validate.menu";
 import { MenuService } from "src/services/menu/menu.service";
-import { useApiMutation } from "src/hooks/useApi";
-
+import { useMutation } from "react-query";
+import { toastr } from "react-redux-toastr";
+import { toastError } from "src/settings/ToastReact/ToastReact";
+import { MenuValidation } from "src/utils/validationsForms";
 
 function MenuPage() {
   const { handleSubmit, control, reset } = useForm<IMenuAdd>();
 
-      // Api cols 
-
+  // Api cols
   const { errors } = useFormState({
     control,
   });
-  const onSubmit:SubmitHandler<IMenuAdd> = (data: IMenuAdd) => {
-    const {name, url, icon} = data
-    reset()
+  const { mutateAsync } = useMutation(
+    "create menu",
+    (data: IMenuAdd) => MenuService.createMenu(data),
+    {
+      onError(error: any) {
+        toastError(error, "Ошибка");
+      },
+      onSuccess() {
+        toastr.success("Меню", "Меню успешно добавлен");
+      },
+    }
+  );
+  const onSubmit: SubmitHandler<IMenuAdd> = async (data: IMenuAdd) => {
+    await mutateAsync(data);
+    reset();
   };
 
   return (
     <MenuPageStyled>
-      <h2>MenuPage</h2>
       <div>
         <div>
           <h3>Добавить меню</h3>
@@ -41,7 +52,7 @@ function MenuPage() {
               rules={MenuValidation}
               render={({ field }) => (
                 <TextField
-                  label="Добавить меню"
+                  label="Добавить название меню"
                   onChange={(e) => field.onChange(e)}
                   value={field.value || ""}
                   fullWidth={true}
@@ -55,7 +66,7 @@ function MenuPage() {
             />
             <Controller
               control={control}
-              name="key"
+              name="url"
               rules={MenuValidation}
               render={({ field }) => (
                 <TextField
@@ -66,8 +77,8 @@ function MenuPage() {
                   size="small"
                   margin="normal"
                   className="auth-form__input"
-                  error={!!errors?.key?.message}
-                  helperText={errors?.key?.message}
+                  error={!!errors?.url?.message}
+                  helperText={errors?.url?.message}
                 />
               )}
             />

@@ -4,6 +4,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "src/settings/localstorage/localStorage";
+import { toastError } from "src/settings/ToastReact/ToastReact";
 const api = axios.create({
   baseURL: API_URL,
 });
@@ -29,7 +30,7 @@ api.interceptors.response.use(
   },
   (err) => {
     // Erro network
-    console.log(err);
+    toastError(err, 'Ошибка')
   }
 );
 
