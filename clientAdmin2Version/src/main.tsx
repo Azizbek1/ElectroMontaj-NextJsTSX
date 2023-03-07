@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <App />
         </GlobalStyle>
       </ConfigProvider>
-     <ReactQueryDevtools initialIsOpen={true} />
+     <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 
     </BrowserRouter>

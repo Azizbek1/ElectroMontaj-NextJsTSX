@@ -11,15 +11,29 @@ import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { IMenuAdd } from "./Menu.props";
 import { MenuValidation } from "./Validate.menu";
+import { MenuService } from "src/services/menu/menu.service";
+import { useApiMutation } from "src/hooks/useApi";
 
 
 function MenuPage() {
   const { handleSubmit, control, reset } = useForm<IMenuAdd>();
+
+      // Api cols 
+  const { mutate, isLoading } = useApiMutation("https://27.u6964.xvest3.ru/api/menus/header/create")
+
   const { errors } = useFormState({
     control,
   });
   const onSubmit:SubmitHandler<IMenuAdd> = (data: IMenuAdd) => {
-    console.log(data);
+    const {menu,key,icon} = data
+    mutate(data, {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+      onError: ({error}) => {
+        console.log(error);
+      }
+    })
     reset()
   };
 
