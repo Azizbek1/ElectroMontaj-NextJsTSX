@@ -36,7 +36,6 @@ function SliderPage() {
         <Controller
           control={control}
           name="name"
-          rules={SliderValidation}
           render={({ field }) => (
             <TextField
               label="Добавить Загаловку"
@@ -54,7 +53,6 @@ function SliderPage() {
         <Controller
           control={control}
           name="slogan"
-          rules={SliderValidation}
           render={({ field }) => (
             <TextField
               label="Добавить текст"

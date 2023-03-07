@@ -10,13 +10,10 @@
 //   },
 // };
 
-interface IValidate {
-  required: string;
-  validate: (value: string) => boolean | string;
-}
-export const MenuValidation: IValidate = {
+
+export const MenuValidation = {
   required: "Обязательно для заполнения",
-  validate: (value) => {
+  validate: (value : any) => {
     if (!value.match(/[A-Za-zА-Яа-яЁё]/)) {
       return "Ведите толька быквы";
     }
@@ -24,7 +21,4 @@ export const MenuValidation: IValidate = {
   },
 };
 
-interface IValidate {
-  required: string;
-  validate: (value: string) => boolean | string;
-}
+
