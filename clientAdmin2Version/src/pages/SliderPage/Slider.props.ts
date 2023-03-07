@@ -1,5 +1,6 @@
 export interface ISliderAdd {
     slogan? : string
-    url? : string
+    name? : string
+    url? : File | string
     show? : string
 }

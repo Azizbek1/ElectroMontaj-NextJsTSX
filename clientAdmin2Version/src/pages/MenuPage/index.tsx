@@ -25,15 +25,15 @@ function MenuPage() {
     control,
   });
   const onSubmit:SubmitHandler<IMenuAdd> = (data: IMenuAdd) => {
-    const {menu,key,icon} = data
-    mutate(data, {
-      onSuccess: (data) => {
-        console.log(data);
-      },
-      onError: ({error}) => {
-        console.log(error);
-      }
-    })
+    console.log(data);
+    // mutate(data, {
+    //   onSuccess: (data) => {
+    //     console.log(data);
+    //   },
+    //   onError: ({error}) => {
+    //     console.log(error);
+    //   }
+    // })
     reset()
   };
 

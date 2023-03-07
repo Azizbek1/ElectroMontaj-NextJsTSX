@@ -1,12 +1,19 @@
-import { Controller, SubmitHandler, useForm, useFormState } from "react-hook-form";
+import { ChangeEvent, Fragment, useRef, useState } from "react";
+import {
+  Controller,
+  SubmitHandler,
+  useForm,
+  useFormState,
+} from "react-hook-form";
 import SliderPageStyled from "./Style";
 import { ISliderAdd } from "./Slider.props";
 import { SliderValidation } from "./Validate.menu";
-import { TextField } from '@mui/material';
+import { Button, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 function SliderPage() {
   const { handleSubmit, control, reset } = useForm<ISliderAdd>();
+  const [file, setFile] = useState<File>();
   const { errors } = useFormState({
     control,
   });
@@ -14,18 +21,42 @@ function SliderPage() {
     console.log(data);
     reset();
   };
-
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
+  const uploadInputRef = useRef(null);
   return (
     <SliderPageStyled>
       <h2>SliderPage</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <Fragment></Fragment>
+        <Controller
+          control={control}
+          name="name"
+          rules={SliderValidation}
+          render={({ field }) => (
+            <TextField
+              label="Добавить Загаловку"
+              onChange={(e) => field.onChange(e)}
+              value={field.value || ""}
+              fullWidth={true}
+              size="small"
+              margin="normal"
+              className="auth-form__input"
+              error={!!errors?.name?.message}
+              helperText={errors?.name?.message}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="slogan"
           rules={SliderValidation}
           render={({ field }) => (
             <TextField
-              label="Добавить меню"
+              label="Добавить текст"
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
@@ -40,39 +71,27 @@ function SliderPage() {
         <Controller
           control={control}
           name="url"
-          rules={SliderValidation}
           render={({ field }) => (
-            <TextField
-              label="Добавить линк"
-              onChange={(e) => field.onChange(e)}
-              value={field.value || ""}
-              fullWidth={true}
-              size="small"
-              margin="normal"
-              className="auth-form__input"
-              error={!!errors?.url?.message}
-              helperText={errors?.url?.message}
-            />
+            <>
+              <input
+                ref={uploadInputRef}
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={(e) => field.onChange(e)}
+              />
+              <Button
+                onClick={() =>
+                  uploadInputRef.current && uploadInputRef.current.click()
+                }
+                variant="contained"
+              >
+                Загрузить картинку 
+              </Button>
+            </>
           )}
         />
-        <Controller
-          control={control}
-          name="show"
-          rules={SliderValidation}
-          render={({ field }) => (
-            <TextField
-              label="Добавить название иконки - React_icon_md"
-              onChange={(e) => field.onChange(e)}
-              value={field.value || ""}
-              fullWidth={true}
-              size="small"
-              margin="normal"
-              className="auth-form__input"
-              error={!!errors?.show?.message}
-              helperText={errors?.show?.message}
-            />
-          )}
-        />
+
         <LoadingButton
           type="submit"
           variant="contained"
