@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import StyledImage from "./Style";
-import { Button } from "antd";
+import { Button } from "@mui/material";
 
 export interface IFile {
   lastModified: number;
