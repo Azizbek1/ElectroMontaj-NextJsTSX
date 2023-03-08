@@ -59,7 +59,19 @@ function MenuPage() {
       },
     }
   );
-
+  const { mutateAsync: deleteAsync } = useMutation(
+    "delete menu",
+    (genreId: string) => MenuService.delete(genreId),
+    {
+      onError(error) {
+        toastError(error, "Ошибка при удаление");
+      },
+      onSuccess() {
+        toastr.success("Удаление", "успешно удалён");
+        queryData.refetch();
+      },
+    }
+  );
   const onSubmit: SubmitHandler<IMenuAdd> = async (data: IMenuAdd) => {
     await mutateAsync(data);
     reset();
@@ -91,7 +103,7 @@ function MenuPage() {
               <Link className="warning__edit" to={`${MenuUrlRoute}/${id}`}>
                 <MdOutlineModeEditOutline />
               </Link>
-              <Button type="primary" danger>
+              <Button onClick={() => deleteAsync(id)} type="primary" danger>
                 <MdCancel />
               </Button>
             </StyledIconColums>
