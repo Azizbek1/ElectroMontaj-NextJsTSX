@@ -4,10 +4,10 @@ export interface TransInfo {
     failedAmount?: any;
 }
 export interface IMenuPropsColumns {
-    userId: string;
-    number: string;
-    status: string;
-    dataReg: string;
+    name: string;
+    url: string;
+    icon: string;
+    category_id?: string;
 }
 export interface IDataApiUlash {
     title: string

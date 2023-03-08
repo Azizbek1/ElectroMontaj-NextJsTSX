@@ -1,4 +1,5 @@
-import { Row } from "antd";
+import { useState } from "react";
+import { Row, Table } from "antd";
 import MenuPageStyled from "./Style";
 import Col from "antd/lib/grid/col";
 import {
@@ -11,21 +12,39 @@ import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { IMenuAdd } from "./Menu.props";
 import { MenuService } from "src/services/menu/menu.service";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { toastr } from "react-redux-toastr";
 import { toastError } from "src/settings/ToastReact/ToastReact";
 import { MenuValidation } from "src/utils/validationsForms";
+import { useDebounce } from "src/hooks/useDebounce";
+import { Userscolumns } from "src/components/Table/Columns";
 
 function MenuPage() {
   const { handleSubmit, control, reset } = useForm<IMenuAdd>();
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearch = useDebounce(searchTerm, 500);
   // Api cols
   const { errors } = useFormState({
     control,
   });
+
+  const queryData = useQuery(
+    ["menu list", debouncedSearch],
+    () => MenuService.getAll(debouncedSearch),
+    {
+      select: ({ data }: any) => {
+        return data.data
+      },
+      onError(error: any) {
+        toastError(error, "actor list");
+      },
+    }
+  );
+  const {data, isLoading, error, isError} = queryData
+
   const { mutateAsync } = useMutation(
     "create menu",
-    (data: IMenuAdd) => MenuService.createMenu(data),
+    (data: IMenuAdd) => MenuService.create(data),
     {
       onError(error: any) {
         toastError(error, "Ошибка");
@@ -35,11 +54,12 @@ function MenuPage() {
       },
     }
   );
+
   const onSubmit: SubmitHandler<IMenuAdd> = async (data: IMenuAdd) => {
     await mutateAsync(data);
     reset();
   };
-
+  const mathId = Math.floor(Math.random() * 10000);
   return (
     <MenuPageStyled>
       <div>
@@ -114,8 +134,11 @@ function MenuPage() {
           </form>
         </div>
       </div>
+      <h3 className="marTop">Список Меню</h3>
       <Row>
-        <Col></Col>
+        <Col>
+          <Table  rowKey="url" columns={Userscolumns} dataSource={data} />;
+        </Col>
       </Row>
     </MenuPageStyled>
   );
