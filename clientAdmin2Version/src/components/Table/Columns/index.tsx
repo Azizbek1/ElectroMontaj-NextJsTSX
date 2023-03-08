@@ -5,7 +5,31 @@ import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { getMenuUrl } from "src/api/configs/api.config";
 import { MenuUrlRoute } from "src/utils";
-import ColomunsStyled from './Style'
+import ColomunsStyled from "./Style";
+import { useMutation } from "react-query";
+import { MenuService } from "src/services/menu/menu.service";
+import { toastError } from "src/settings/ToastReact/ToastReact";
+import { toastr } from "react-redux-toastr";
+
+const { mutateAsync: deleteAsync } = useMutation(
+  "delete menu",
+  (genreId: string) => MenuService.delete(genreId),
+  {
+    onError(error) {
+      toastError(error, "Ошибка при удаление");
+    },
+    onSuccess() {
+      toastr.success("Удалился", "успешно удалён");
+    },
+  }
+);
+const HandlaDelete = (id: string) => {
+  if (prompt("Точно хотите удалить ?")) {
+    deleteAsync(id);
+  } else {
+    return false;
+  }
+};
 export const Userscolumns: ColumnsType<IMenuPropsColumns> = [
   {
     title: "Имя",
@@ -26,17 +50,19 @@ export const Userscolumns: ColumnsType<IMenuPropsColumns> = [
     title: "Действия",
     key: "id",
     dataIndex: "id",
-    render: (id) => (
-      <>
-        <ColomunsStyled>
-          <Link  className="warning__edit" to={`${MenuUrlRoute}/${id}`}>
-            <MdOutlineModeEditOutline />
-          </Link>
-          <Link  className="warning__delete" to={`${MenuUrlRoute}/${id}`}>
-             <MdCancel />
-          </Link>
-        </ColomunsStyled>
-      </>
-    ),
+    render: (id) => {
+      return (
+        <>
+          <ColomunsStyled>
+            <Link className="warning__edit" to={`${MenuUrlRoute}/${id}`}>
+              <MdOutlineModeEditOutline />
+            </Link>
+            <Button onClick={() => HandlaDelete(id)} type="primary" danger>
+              <MdCancel />
+            </Button>
+          </ColomunsStyled>
+        </>
+      );
+    },
   },
 ];

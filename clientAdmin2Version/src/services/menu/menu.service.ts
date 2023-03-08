@@ -23,4 +23,7 @@ export const MenuService = {
   async update(id: string, data: any) {
     return api.post<any>(getMenuUrl(`/edit/${id}`), data);
   },
+  async delete(id: string) {
+    return api.delete<string>(getMenuUrl(`/delete/${id}`));
+  },
 };

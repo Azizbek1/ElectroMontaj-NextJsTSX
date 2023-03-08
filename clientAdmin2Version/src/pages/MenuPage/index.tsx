@@ -28,7 +28,7 @@ function MenuPage() {
     control,
   });
 
-  const queryData = useQuery(
+const queryData = useQuery(
     ["menu list", debouncedSearch],
     () => MenuService.getAll(debouncedSearch),
     {
@@ -60,7 +60,7 @@ function MenuPage() {
     await mutateAsync(data);
     reset();
   };
-  const mathId = Math.floor(Math.random() * 10000);
+
   return (
     <MenuPageStyled>
       <div>
