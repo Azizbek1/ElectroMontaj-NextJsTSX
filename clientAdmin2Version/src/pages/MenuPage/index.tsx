@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Row, Table } from "antd";
-import MenuPageStyled from "./Style";
+import { Button, Row, Table } from "antd";
+import MenuPageStyled, { StyledIconColums } from "./Style";
 import Col from "antd/lib/grid/col";
 import {
   Controller,
@@ -17,7 +17,11 @@ import { toastr } from "react-redux-toastr";
 import { toastError } from "src/settings/ToastReact/ToastReact";
 import { MenuValidation } from "src/utils/validationsForms";
 import { useDebounce } from "src/hooks/useDebounce";
-import { Userscolumns } from "src/components/Table/Columns";
+import { Link } from "react-router-dom";
+import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
+import { MenuUrlRoute } from "src/utils";
+import { IMenuPropsColumns } from "src/components/Table/Columns/columns.props";
+import { ColumnsType } from "antd/lib/table/interface";
 
 function MenuPage() {
   const { handleSubmit, control, reset } = useForm<IMenuAdd>();
@@ -28,19 +32,19 @@ function MenuPage() {
     control,
   });
 
-const queryData = useQuery(
+  const queryData = useQuery(
     ["menu list", debouncedSearch],
     () => MenuService.getAll(debouncedSearch),
     {
       select: ({ data }: any) => {
-        return data.data
+        return data.data;
       },
       onError(error: any) {
         toastError(error, "actor list");
       },
     }
   );
-  const {data, isLoading, error, isError} = queryData
+  const { data, isLoading, error, isError } = queryData;
 
   const { mutateAsync } = useMutation(
     "create menu",
@@ -51,7 +55,7 @@ const queryData = useQuery(
       },
       onSuccess() {
         toastr.success("Меню", "Меню успешно добавлен");
-        queryData.refetch()
+        queryData.refetch();
       },
     }
   );
@@ -60,7 +64,42 @@ const queryData = useQuery(
     await mutateAsync(data);
     reset();
   };
-
+  const Userscolumns: ColumnsType<IMenuPropsColumns> = [
+    {
+      title: "Имя",
+      key: "name",
+      dataIndex: "name",
+    },
+    {
+      title: "URL адрес",
+      key: "url",
+      dataIndex: "url",
+    },
+    {
+      title: "Иконка",
+      key: "icon",
+      dataIndex: "icon",
+    },
+    {
+      title: "Действия",
+      key: "id",
+      dataIndex: "id",
+      render: (id: string) => {
+        return (
+          <>
+            <StyledIconColums>
+              <Link className="warning__edit" to={`${MenuUrlRoute}/${id}`}>
+                <MdOutlineModeEditOutline />
+              </Link>
+              <Button type="primary" danger>
+                <MdCancel />
+              </Button>
+            </StyledIconColums>
+          </>
+        );
+      },
+    },
+  ];
   return (
     <MenuPageStyled>
       <div>
@@ -138,7 +177,12 @@ const queryData = useQuery(
       <h3 className="marTop">Список Меню</h3>
       <Row>
         <Col xl={16}>
-          <Table loading={isLoading}  rowKey="id" columns={Userscolumns} dataSource={data} />
+          <Table
+            loading={isLoading}
+            rowKey="id"
+            columns={Userscolumns}
+            dataSource={data}
+          />
         </Col>
       </Row>
     </MenuPageStyled>
