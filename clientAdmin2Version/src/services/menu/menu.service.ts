@@ -20,4 +20,7 @@ export const MenuService = {
         : {},
     });
   },
+  async update(id: string, data: any) {
+    return api.post<any>(getMenuUrl(`/edit/${id}`), data);
+  },
 };

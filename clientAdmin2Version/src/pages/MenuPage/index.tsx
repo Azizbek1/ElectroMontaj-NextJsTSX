@@ -51,6 +51,7 @@ function MenuPage() {
       },
       onSuccess() {
         toastr.success("Меню", "Меню успешно добавлен");
+        queryData.refetch()
       },
     }
   );
@@ -136,8 +137,8 @@ function MenuPage() {
       </div>
       <h3 className="marTop">Список Меню</h3>
       <Row>
-        <Col>
-          <Table  rowKey="url" columns={Userscolumns} dataSource={data} />;
+        <Col xl={16}>
+          <Table loading={isLoading}  rowKey="id" columns={Userscolumns} dataSource={data} />
         </Col>
       </Row>
     </MenuPageStyled>
