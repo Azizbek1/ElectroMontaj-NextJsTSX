@@ -1,5 +1,6 @@
 import React from "react";
 import EditPage from "src/pages/MenuPage/EditPage";
+import EditPageSlide from "src/pages/SliderPage/EditPage";
 const ContactPage = React.lazy(() =>
   import("src/pages/ContactPage/ContactPage")
 );
@@ -20,6 +21,11 @@ export const PrivateRoute = [
     path: "/slider",
     component: <SliderPage />,
     key: "SliderPage",
+  },
+  {
+    path: "/slider/:id",
+    component: <EditPageSlide />,
+    key: "EditPageSlide",
   },
   {
     path: "/",

@@ -11,7 +11,7 @@
 // };
 
 
-export const MenuValidation = {
+export const MenuValidation: any = {
   required: "Обязательно для заполнения",
   validate: (value : any) => {
     if (!value.match(/[A-Za-zА-Яа-яЁё]/)) {

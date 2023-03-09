@@ -10,7 +10,7 @@ export const MenuService = {
     );
     return response;
   },
-
+  
   async getAll(searchTerm?: string) {
     return api.get<any>(getMenuUrl(`/index`), {
       params: searchTerm
@@ -20,8 +20,11 @@ export const MenuService = {
         : {},
     });
   },
-  async update(id: string, data: any) {
+  async update(id: any, data: any) {
     return api.post<any>(getMenuUrl(`/edit/${id}`), data);
+  },
+  async show(id: any) {
+    return api.get<any>(getMenuUrl(`/show/${id}`));
   },
   async delete(id: string) {
     return api.delete<string>(getMenuUrl(`/delete/${id}`));

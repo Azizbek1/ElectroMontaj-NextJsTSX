@@ -15,4 +15,26 @@ export const SlideService = {
     );
     return response;
   },
+  async getAll(searchTerm?: string) {
+    return await api.get<any>(getSlideUrl(`/indexAdmin`), {
+      params: searchTerm
+        ? {
+            searchTerm,
+          }
+        : {},
+    });
+  },
+  async update(id: any, data: any) {
+    return await api.post<any>(getSlideUrl(`/edit/${id}`), data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  },
+  async show(id: any) {
+    return await api.get<any>(getSlideUrl(`/show/${id}`));
+  },
+  async delete(id: string) {
+    return await api.delete<string>(getSlideUrl(`/delete/${id}`));
+  },
 };

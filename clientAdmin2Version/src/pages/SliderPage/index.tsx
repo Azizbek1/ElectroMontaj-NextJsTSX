@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment, useRef, useState } from "react";
+import {  Fragment, useRef, useState } from "react";
 import {
   Controller,
   SubmitHandler,
@@ -11,18 +11,39 @@ import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import UploadImage from "src/components/FileUpload";
 import { MenuValidation } from "src/utils/validationsForms";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { toastError } from "src/settings/ToastReact/ToastReact";
 import { toastr } from "react-redux-toastr";
 import { SlideService } from "src/services/sliders/slide.service";
+import { ColumnsType } from "antd/lib/table/interface";
+import { ISlidePropsColumns } from "src/components/Table/Columns/columns.props";
+import { Link } from "react-router-dom";
+import { SlideUrlRoute } from "src/utils/urlsRouter";
+import { Button, Col, Row, Table } from "antd";
+import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
+import { useDebounce } from "src/hooks/useDebounce";
 
 function SliderPage() {
   const { handleSubmit, control, reset } = useForm<ISliderAdd>();
-  const [file, setFile] = useState<File>();
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const debouncedSearch = useDebounce(searchTerm, 500);
+
   const { errors } = useFormState({
     control,
   });
-
+  const queryData = useQuery(
+    ["menu list", debouncedSearch],
+    () => SlideService.getAll(debouncedSearch),
+    {
+      select: ({ data }: any) => {
+        return data.data;
+      },
+      onError(error: any) {
+        toastError(error, "actor list");
+      },
+    }
+  );
+  const { data, isLoading, error, isError } = queryData;
   const { mutateAsync } = useMutation(
     "create slide",
     (data: any) => SlideService.create(data),
@@ -32,19 +53,73 @@ function SliderPage() {
       },
       onSuccess() {
         toastr.success("Слидер", "Слидер успешно добавлен");
+        queryData.refetch();
+      },
+    }
+  );
+  const { mutateAsync: deleteAsync } = useMutation(
+    "delete slide",
+    (genreId: string) => SlideService.delete(genreId),
+    {
+      onError(error) {
+        toastError(error, "Ошибка при удаление");
+      },
+      onSuccess() {
+        toastr.success("Удаление", "успешно удалён");
+        queryData.refetch();
       },
     }
   );
   const onSubmit: SubmitHandler<ISliderAdd> = async (data: ISliderAdd) => {
-    console.log(data);
-    await mutateAsync(data);
+    const { name, slogan, url } = data;
+    await mutateAsync({ name, slogan, url, show: true });
     reset();
   };
+  const Slidecolumns: ColumnsType<ISlidePropsColumns> = [
+    {
+      title: "Загаловка слидера",
+      key: "name",
+      dataIndex: "name",
+    },
+    {
+      title: "Картинка",
+      key: "url",
+      dataIndex: "url",
+      render: (url: string) => {
+        return (
+          <SliderPageStyled>
+            <img className="image__colomns" src={`${url}`} alt="png" />
+          </SliderPageStyled>
+        );
+      },
+    },
+    {
+      title: "Текст",
+      key: "slogan",
+      dataIndex: "slogan",
+    },
+    {
+      title: "Действия",
+      key: "id",
+      dataIndex: "id",
+      render: (id: string) => {
+        return (
+          <SliderPageStyled>
+            <Link className="warning__edit" to={`${SlideUrlRoute}/${id}`}>
+              <MdOutlineModeEditOutline />
+            </Link>
+            <Button onClick={() => deleteAsync(id)} type="primary" danger>
+              <MdCancel />
+            </Button>
+          </SliderPageStyled>
+        );
+      },
+    },
+  ];
   return (
     <SliderPageStyled>
       <h2>SliderPage</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Fragment></Fragment>
         <Controller
           control={control}
           name="name"
@@ -101,6 +176,16 @@ function SliderPage() {
           Добавить
         </LoadingButton>
       </form>
+      <Row>
+        <Col xl={16}>
+          <Table
+            loading={isLoading}
+            rowKey="id"
+            columns={Slidecolumns}
+            dataSource={data}
+          />
+        </Col>
+      </Row>
     </SliderPageStyled>
   );
 }
