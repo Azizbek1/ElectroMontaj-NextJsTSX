@@ -7,10 +7,14 @@ import {
 } from "react-hook-form";
 import SliderPageStyled from "./Style";
 import { ISliderAdd } from "./Slider.props";
-import { SliderValidation } from "./Validate.menu";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import UploadImage from "src/components/FileUpload";
+import { MenuValidation } from "src/utils/validationsForms";
+import { useMutation } from "react-query";
+import { toastError } from "src/settings/ToastReact/ToastReact";
+import { toastr } from "react-redux-toastr";
+import { SlideService } from "src/services/sliders/slide.service";
 
 function SliderPage() {
   const { handleSubmit, control, reset } = useForm<ISliderAdd>();
@@ -18,16 +22,24 @@ function SliderPage() {
   const { errors } = useFormState({
     control,
   });
-  const onSubmit: SubmitHandler<ISliderAdd> = (data: ISliderAdd) => {
-    console.log(data)
+
+  const { mutateAsync } = useMutation(
+    "create slide",
+    (data: any) => SlideService.create(data),
+    {
+      onError(error: any) {
+        toastError(error, "Ошибка");
+      },
+      onSuccess() {
+        toastr.success("Слидер", "Слидер успешно добавлен");
+      },
+    }
+  );
+  const onSubmit: SubmitHandler<ISliderAdd> = async (data: ISliderAdd) => {
+    console.log(data);
+    await mutateAsync(data);
     reset();
   };
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
-  const uploadInputRef = useRef(null);
   return (
     <SliderPageStyled>
       <h2>SliderPage</h2>
@@ -39,6 +51,7 @@ function SliderPage() {
           render={({ field }) => (
             <TextField
               label="Добавить Загаловку"
+              rules={MenuValidation}
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
@@ -56,6 +69,7 @@ function SliderPage() {
           render={({ field }) => (
             <TextField
               label="Добавить текст"
+              rules={MenuValidation}
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
@@ -71,7 +85,7 @@ function SliderPage() {
           control={control}
           name="url"
           render={({ field }) => (
-           <UploadImage  onChange={(e) => field.onChange(e)} />
+            <UploadImage onChange={(e) => field.onChange(e)} />
           )}
         />
 
