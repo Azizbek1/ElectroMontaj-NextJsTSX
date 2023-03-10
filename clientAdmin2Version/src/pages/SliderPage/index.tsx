@@ -32,14 +32,14 @@ function SliderPage() {
     control,
   });
   const queryData = useQuery(
-    ["menu list", debouncedSearch],
+    ["slide list", debouncedSearch],
     () => SlideService.getAll(debouncedSearch),
     {
       select: ({ data }: any) => {
         return data.data;
       },
       onError(error: any) {
-        toastError(error, "actor list");
+        toastError(error, "slide list");
       },
     }
   );
