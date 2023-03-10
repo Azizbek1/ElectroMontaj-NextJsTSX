@@ -50,6 +50,7 @@ function EditPageSlide(): ReactElement {
     const { name, slogan, url } = data;
     await mutateAsync({ name, slogan, url, show: true });
   };
+  console.log(data);
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,7 +61,7 @@ function EditPageSlide(): ReactElement {
             <TextField
               label="Добавить Загаловку"
               onChange={(e) => field.onChange(e)}
-              value={field.value || data?.data.data.name}
+              value={field.value || data?.data?.data.name}
               fullWidth={true}
               size="small"
               margin="normal"
@@ -77,7 +78,7 @@ function EditPageSlide(): ReactElement {
             <TextField
               label="Добавить текст"
               onChange={(e) => field.onChange(e)}
-              value={field.value || data?.data.data.slogan}
+              value={field.value || data?.data?.data.slogan}
               fullWidth={true}
               size="small"
               margin="normal"
