@@ -1,5 +1,6 @@
 import React from "react";
 import EditPage from "src/pages/MenuPage/EditPage";
+import EditPageNews from "src/pages/NewsPage/EditPage";
 import EditPageSlide from "src/pages/SliderPage/EditPage";
 const ContactPage = React.lazy(() =>
   import("src/pages/ContactPage/ContactPage")
@@ -61,6 +62,11 @@ export const PrivateRoute = [
     path: "/news",
     component: <NewsPage />,
     key: "NewsPage",
+  },
+  {
+    path: "/news/:id",
+    component: <EditPageNews />,
+    key: "EditPageNews",
   },
   {
     path: "/contact",

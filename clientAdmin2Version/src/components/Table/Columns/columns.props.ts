@@ -11,3 +11,9 @@ export interface ISlidePropsColumns {
     id?: string;
     show?: boolean | string;
 }
+export interface INewsPropsColumns {
+    name: string;
+    text: File;
+    file: string;
+    id?: string | number;
+}
