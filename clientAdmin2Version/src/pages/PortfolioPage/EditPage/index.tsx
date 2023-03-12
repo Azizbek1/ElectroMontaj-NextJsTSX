@@ -13,20 +13,20 @@ import { toastr } from "react-redux-toastr";
 import { useNavigate, useParams } from "react-router-dom";
 import UploadImage from "src/components/FileUpload";
 import { toastError } from "src/settings/ToastReact/ToastReact";
-import { INewsAdd } from "../News.props";
-import { NewsService } from "src/services/news/news.service";
+import { INewsPort } from "../News.props";
+import { PrortFolioService } from "src/services/portfolio/portfolio.service";
 
 
-function EditPageNews(): ReactElement {
-  const { handleSubmit, control, reset } = useForm<INewsAdd>();
+function PortfolioPage(): ReactElement {
+  const { handleSubmit, control, reset } = useForm<INewsPort>();
   const { id } = useParams();
   const navigate = useNavigate();
   const { errors } = useFormState({
     control,
   });
   const { isLoading, data } = useQuery(
-    ["show news"],
-    () => NewsService.show(id),
+    ["show Portfolio"],
+    () => PrortFolioService.show(id),
     {
       onSuccess({ data }) {},
       onError(error) {
@@ -35,15 +35,15 @@ function EditPageNews(): ReactElement {
     }
   );
   const { mutateAsync } = useMutation(
-    "update news",
-    (data: any) => NewsService.update(id, data),
+    "update Portfolio",
+    (data: any) => PrortFolioService.update(id, data),
     {
       onError(error: any) {
         toastError(error, "Ошибка");
       },
       onSuccess() {
-        toastr.success("Новости", "Новости успешно редактирован");
-        navigate("/news");
+        toastr.success("портфолио", "портфолио успешно редактирован");
+        navigate("/portfolio");
       },
     }
   );
@@ -116,4 +116,4 @@ function EditPageNews(): ReactElement {
     </EditNewsStyle>
   );
 }
-export default EditPageNews;
+export default PortfolioPage;

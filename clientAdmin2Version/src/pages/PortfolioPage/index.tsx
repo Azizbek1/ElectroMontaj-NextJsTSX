@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import NewsStyled from "./Style";
+import PortFolioStyled from "./Style";
 import { Link } from "react-router-dom";
 import {
   Controller,
@@ -7,25 +7,26 @@ import {
   useForm,
   useFormState,
 } from "react-hook-form";
-import { INewsAdd } from "./News.props";
+
 import { ColumnsType } from "antd/es/table";
 import { INewsPropsColumns } from "src/components/Table/Columns/columns.props";
 import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
 import { Button, Col, Row, Table } from "antd";
-import { NewsUrlRoute } from "src/utils/urlsRouter";
+import { PortUrlRoute } from "src/utils/urlsRouter";
 import { LoadingButton } from "@mui/lab";
 import UploadImage from "src/components/FileUpload";
 import { MenuValidation } from "src/utils/validationsForms";
 import { TextField } from "@mui/material";
 import { useDebounce } from "src/hooks/useDebounce";
-import { NewsService } from "src/services/news/news.service";
 import { toastError } from "src/settings/ToastReact/ToastReact";
 import { useMutation, useQuery } from "react-query";
 import { toastr } from "react-redux-toastr";
+import { INewsPort } from "./News.props";
+import { PrortFolioService } from "src/services/portfolio/portfolio.service";
 interface Props {}
 
-function NewsPage({}: Props): ReactElement {
-  const { handleSubmit, control, reset } = useForm<INewsAdd>();
+function PortfolioPage({}: Props): ReactElement {
+  const { handleSubmit, control, reset } = useForm<INewsPort>();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -33,33 +34,33 @@ function NewsPage({}: Props): ReactElement {
     control,
   });
   const queryData = useQuery(
-    ["news list", debouncedSearch],
-    () => NewsService.getAll(debouncedSearch),
+    ["Portfolio list", debouncedSearch],
+    () => PrortFolioService.getAll(debouncedSearch),
     {
       select: ({ data }: any) => {
         return data.data;
       },
       onError(error: any) {
-        toastError(error, "news list");
+        toastError(error, "Portfolio list");
       },
     }
   );
   const { mutateAsync } = useMutation(
-    "create news",
-    (data: any) => NewsService.create(data),
+    "create Portfolio",
+    (data: any) => PrortFolioService.create(data),
     {
       onError(error: any) {
         toastError(error, "Ошибка");
       },
       onSuccess() {
-        toastr.success("Новости", "Новости успешно добавлен");
+        toastr.success("Портфолио", "Портфолио успешно добавлен");
         queryData.refetch();
       },
     }
   );
   const { mutateAsync: deleteAsync } = useMutation(
-    "delete news",
-    (genreId: string) => NewsService.delete(genreId),
+    "delete Portfolio",
+    (genreId: string) => PrortFolioService.delete(genreId),
     {
       onError(error) {
         toastError(error, "Ошибка при удаление");
@@ -70,10 +71,10 @@ function NewsPage({}: Props): ReactElement {
       },
     }
   );
-  const { data, isLoading} = queryData;
+  const { data, isLoading } = queryData;
   const Newscolumns: ColumnsType<INewsPropsColumns> = [
     {
-      title: "Загаловка Новости",
+      title: "Загаловка Портфолио",
       key: "name",
       dataIndex: "name",
     },
@@ -83,9 +84,9 @@ function NewsPage({}: Props): ReactElement {
       dataIndex: "file",
       render: (url: string) => {
         return (
-          <NewsStyled>
+          <PortFolioStyled>
             <img className="image__colomns" src={`${url}`} alt="jpg" />
-          </NewsStyled>
+          </PortFolioStyled>
         );
       },
     },
@@ -100,25 +101,25 @@ function NewsPage({}: Props): ReactElement {
       dataIndex: "id",
       render: (id: string) => {
         return (
-          <NewsStyled>
-            <Link className="warning__edit" to={`${NewsUrlRoute}/${id}`}>
+          <PortFolioStyled>
+            <Link className="warning__edit" to={`${PortUrlRoute}/${id}`}>
               <MdOutlineModeEditOutline />
             </Link>
             <Button onClick={() => deleteAsync(id)} type="primary" danger>
               <MdCancel />
             </Button>
-          </NewsStyled>
+          </PortFolioStyled>
         );
       },
     },
   ];
-  const onSubmit: SubmitHandler<INewsAdd> = async (data: INewsAdd) => {
+  const onSubmit: SubmitHandler<INewsPort> = async (data: INewsPort) => {
     await mutateAsync(data);
     reset();
   };
   return (
     <>
-      <h2>NewsPage</h2>
+      <h2>PortfolioPage</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
@@ -130,6 +131,7 @@ function NewsPage({}: Props): ReactElement {
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
+              
               size="small"
               margin="normal"
               className="auth-form__input"
@@ -190,4 +192,4 @@ function NewsPage({}: Props): ReactElement {
   );
 }
 
-export default NewsPage;
+export default PortfolioPage;

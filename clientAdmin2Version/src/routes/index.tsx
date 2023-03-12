@@ -1,15 +1,14 @@
 import React from "react";
-import EditPage from "src/pages/MenuPage/EditPage";
-import EditPageNews from "src/pages/NewsPage/EditPage";
-import EditPageSlide from "src/pages/SliderPage/EditPage";
-const ContactPage = React.lazy(() =>
-  import("src/pages/ContactPage/ContactPage")
-);
+import EditPageProfolio from "src/pages/PortfolioPage/EditPage";
+
+const PortfolioPage = React.lazy(() =>import("src/pages/PortfolioPage"));
+const EditPage = React.lazy(() =>import("src/pages/MenuPage/EditPage"));
+const EditPageNews = React.lazy(() =>import("src/pages/NewsPage/EditPage"));
+const EditPageSlide = React.lazy(() =>import("src/pages/SliderPage/EditPage"));
+const ContactPage = React.lazy(() =>import("src/pages/ContactPage/ContactPage"));
 const NewsPage = React.lazy(() => import("src/pages/NewsPage/NewsPage"));
 const UslugiPage = React.lazy(() => import("src/pages/UslugiPage/UslugiPage"));
-const CommentsPage = React.lazy(() =>
-  import("src/pages/CommentsPage/CommentsPage")
-);
+const CommentsPage = React.lazy(() =>import("src/pages/CommentsPage/CommentsPage"));
 const AboutPage = React.lazy(() => import("src/pages/AboutPage/AboutPage"));
 const SiginPage = React.lazy(() => import("src/pages/SiginPage"));
 const SliderPage = React.lazy(() => import("src/pages/SliderPage"));
@@ -37,6 +36,16 @@ export const PrivateRoute = [
     path: "/menus",
     component: <MenuPage />,
     key: "MenuPage",
+  },
+  {
+    path: "/portfolio",
+    component: <PortfolioPage />,
+    key: "PortfolioPage",
+  },
+  {
+    path: "/portfolio/:id",
+    component: <EditPageProfolio />,
+    key: "EditPageProfolio",
   },
   {
     path: "/menus/:id",

@@ -6,6 +6,8 @@ export const getMenuUrl = (string: string) => `/menus/header${string}`
 export const getSlideUrl = (string: string) => `/main/slider${string}`
 // News 
 export const getNewsUrl = (string: string) => `/main/news${string}`
+//Portfolio 
+export const getPortUrl = (string: string) => `/main/portfolio${string}`
 
 export const getUsersUrl = (string: string) => `/user${string}`
 export const getMoviesUrl = (string: string) => `/movies${string}`

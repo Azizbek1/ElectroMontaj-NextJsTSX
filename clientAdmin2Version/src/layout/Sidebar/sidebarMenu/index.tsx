@@ -12,6 +12,7 @@ import {
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import { MenuProps, Tooltip } from "antd";
+import { MdDataExploration } from "react-icons/md";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -40,6 +41,7 @@ export const items: MenuProps["items"] = [
     getItem("меню", "/menus", <TableOutlined />),
   ]),
   getItem("о копмании", "/about", <StockOutlined />),
+  getItem("Портфолио", "/portfolio", <MdDataExploration />),
   getItem("услуги", '/uslugi', <BarChartOutlined />),
   getItem("новости", '/news', <AreaChartOutlined />),
   getItem("отзывы", '/comments', <CommentOutlined />),
