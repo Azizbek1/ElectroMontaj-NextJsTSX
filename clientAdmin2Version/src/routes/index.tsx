@@ -1,6 +1,8 @@
 import React from "react";
-import EditPageProfolio from "src/pages/PortfolioPage/EditPage";
+import EditUslugiPage from "src/pages/UslugiPage/EditPage";
 
+const EditAboutPage = React.lazy(() =>import("src/pages/AboutPage/EditPage"));
+const EditPageProfolio = React.lazy(() =>import("src/pages/PortfolioPage/EditPage"));
 const PortfolioPage = React.lazy(() =>import("src/pages/PortfolioPage"));
 const EditPage = React.lazy(() =>import("src/pages/MenuPage/EditPage"));
 const EditPageNews = React.lazy(() =>import("src/pages/NewsPage/EditPage"));
@@ -58,6 +60,11 @@ export const PrivateRoute = [
     key: "AboutPage",
   },
   {
+    path: "/about/edit",
+    component: <EditAboutPage />,
+    key: "EditAboutPage",
+  },
+  {
     path: "/comments",
     component: <CommentsPage />,
     key: "CommentsPage",
@@ -66,6 +73,11 @@ export const PrivateRoute = [
     path: "/uslugi",
     component: <UslugiPage />,
     key: "UslugiPage",
+  },
+  {
+    path: "/uslugi/:id",
+    component: <EditUslugiPage />,
+    key: "EditUslugiPage",
   },
   {
     path: "/news",
