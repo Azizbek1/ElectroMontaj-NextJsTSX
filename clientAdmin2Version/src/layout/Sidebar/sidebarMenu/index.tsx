@@ -42,7 +42,7 @@ export const items: MenuProps["items"] = [
   ]),
   getItem("о копмании", "/about", <StockOutlined />),
   getItem("Портфолио", "/portfolio", <MdDataExploration />),
-  getItem("услуги", '/uslugi', <BarChartOutlined />),
+  getItem("О нас", '/uslugi', <BarChartOutlined />),
   getItem("новости", '/news', <AreaChartOutlined />),
   getItem("отзывы", '/comments', <CommentOutlined />),
   getItem("контакты", '/contact', <FundOutlined />),

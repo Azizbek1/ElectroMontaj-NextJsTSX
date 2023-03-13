@@ -6,7 +6,7 @@ const DoverItemBox = ({ text, title, image, id }: IDover) => {
   return (
     <div className={styles.item} key={id}>
       <div className={styles.itemImage}>
-        <Image src={`/png/${image}`} alt="png" width={60} height={60} />
+        <Image src={`/png/${image}`} alt="png" width={60} height={60} priority />
       </div>
       <div>
         <h3 className={styles.title}>{title}</h3>

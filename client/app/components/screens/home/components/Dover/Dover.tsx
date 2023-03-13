@@ -3,7 +3,7 @@ import styles from "./dover.module.scss";
 import { doverItem } from "@/components/fakeData/dover/dover";
 import DoverItemBox from "./DoverItem";
 
-const Dover: FC = () => {
+const Dover: FC = (props) => {
   return (
     <div className={styles.dover}>
       <h2 className={styles.doverTitle}>ПОЧЕМУ НАМ ДОВЕРЯЮТ СОТНИ КЛИЕНТОВ</h2>

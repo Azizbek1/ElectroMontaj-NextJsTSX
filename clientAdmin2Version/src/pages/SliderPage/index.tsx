@@ -177,7 +177,7 @@ function SliderPage() {
         </LoadingButton>
       </form>
       <Row>
-        <Col xl={16}>
+        <Col xl={20}>
           <Table
             loading={isLoading}
             rowKey="id"

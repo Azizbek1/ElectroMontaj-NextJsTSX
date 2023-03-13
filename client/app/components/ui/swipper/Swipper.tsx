@@ -27,17 +27,18 @@ const SipperSlider = ({ slide }: any) => {
           <SwiperSlide key={index}>
             <div className={styles.slider}>
               <div className={styles.absolyute}>
-                <Htag tag="h1">{item.title}</Htag>
-                <Htag tag="h4">{item.text}</Htag>
+                <Htag tag="h1">{item.name}</Htag>
+                <Htag tag="h4">{item.slogan}</Htag>
               </div>
               <div className={styles.images}>
                 <Image
-                  src={`/jpg/${item.images}`}
+                  src={`${item.url}`}
                   alt="jpg"
                   width={1400}
                   height={600}
                   quality={100}
                   layout="responsive"
+                  priority
                 />
               </div>
             </div>

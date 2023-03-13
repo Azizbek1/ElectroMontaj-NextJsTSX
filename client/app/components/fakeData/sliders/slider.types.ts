@@ -1,5 +1,5 @@
 export interface ISliders {
-    id: number
+    id: number | string
     title: string
     text: string
     images: string
