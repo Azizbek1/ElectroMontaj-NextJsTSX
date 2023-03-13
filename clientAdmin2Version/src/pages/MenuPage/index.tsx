@@ -15,7 +15,7 @@ import { MenuService } from "src/services/menu/menu.service";
 import { useMutation, useQuery } from "react-query";
 import { toastr } from "react-redux-toastr";
 import { toastError } from "src/settings/ToastReact/ToastReact";
-import { MenuValidation } from "src/utils/validationsForms";
+import { MenuValidation, MenuValidationMenu } from "src/utils/validationsForms";
 import { useDebounce } from "src/hooks/useDebounce";
 import { Link } from "react-router-dom";
 import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
@@ -139,7 +139,7 @@ function MenuPage() {
             <Controller
               control={control}
               name="url"
-              rules={MenuValidation}
+              rules={MenuValidationMenu}
               render={({ field }) => (
                 <TextField
                   label="Добавить линк"

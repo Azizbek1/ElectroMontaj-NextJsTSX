@@ -21,4 +21,8 @@ export const MenuValidation: any = {
   },
 };
 
+export const MenuValidationMenu: any = {
+  required: "Обязательно для заполнения",
+};
+
 

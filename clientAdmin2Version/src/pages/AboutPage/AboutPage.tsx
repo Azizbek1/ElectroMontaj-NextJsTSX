@@ -83,7 +83,6 @@ function AboutPage({}: Props): ReactElement {
           render={({ field }) => (
             <TextField
               label="Добавить текст"
-              rules={MenuValidation}
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
