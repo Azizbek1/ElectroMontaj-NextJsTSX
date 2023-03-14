@@ -5,7 +5,8 @@ import { servisesItem } from "@/components/fakeData/servises/servises";
 import Link from "next/link";
 import { AppLinkTheme, Applink } from "@/components/elements/AppLink/Applink";
 
-const Servises: FC = () => {
+const Servises: FC = (props) => {
+  console.log(props);
   return (
     <div className={styles.servises}>
       <h2 className={styles.servisesTitle}>Услуги</h2>

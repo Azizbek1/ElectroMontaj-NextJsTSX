@@ -12,3 +12,5 @@ export const getPortUrl = (string: string) => `/main/portfolio${string}`;
 export const getAboutUrl = (string: string) => `/main/about${string}`;
 //Nam Doveryayur
 export const getDoverUrl = (string: string) => `/main/trust${string}`;
+//Servises Uslugi
+export const getServisesUrl = (string: string) => `/main/service${string}`;

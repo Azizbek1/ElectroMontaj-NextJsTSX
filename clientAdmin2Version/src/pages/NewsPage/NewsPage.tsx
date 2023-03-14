@@ -151,8 +151,8 @@ function NewsPage({}: Props): ReactElement {
               size="small"
               margin="normal"
               className="auth-form__input"
-              error={!!errors?.slogan?.message}
-              helperText={errors?.slogan?.message}
+              error={!!errors?.text?.message}
+              helperText={errors?.text?.message}
             />
           )}
         />

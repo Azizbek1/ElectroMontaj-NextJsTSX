@@ -1,6 +1,7 @@
 import React from "react";
-import EditUslugiPage from "src/pages/UslugiPage/EditPage";
 
+const EditUslugiPage = React.lazy(() =>import("src/pages/UslugiPage/EditPage"));
+const ServicesPage = React.lazy(() =>import("src/pages/ServicesPage"));
 const EditAboutPage = React.lazy(() =>import("src/pages/AboutPage/EditPage"));
 const EditPageProfolio = React.lazy(() =>import("src/pages/PortfolioPage/EditPage"));
 const PortfolioPage = React.lazy(() =>import("src/pages/PortfolioPage"));
@@ -19,6 +20,11 @@ const MainPage = React.lazy(() => import("src/pages/MainPage"));
 
 // Private Router == AdminPanel MErchant
 export const PrivateRoute = [
+  {
+    path: "/services",
+    component: <ServicesPage />,
+    key: "ServicesPage",
+  },
   {
     path: "/slider",
     component: <SliderPage />,

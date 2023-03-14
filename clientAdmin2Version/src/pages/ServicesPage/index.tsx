@@ -1,32 +1,28 @@
 import React, { ReactElement, useState } from "react";
-import PortFolioStyled from "./Style";
-import { Link } from "react-router-dom";
+import ServicesPageStyled from "./Style";
+import { Button, Col, Row, Table } from "antd";
 import {
   Controller,
   SubmitHandler,
   useForm,
   useFormState,
 } from "react-hook-form";
-
+import { TextField } from "@mui/material";
+import { MenuValidation } from "src/utils/validationsForms";
 import { ColumnsType } from "antd/es/table";
-import { INewsPropsColumns } from "src/components/Table/Columns/columns.props";
+import { Link } from "react-router-dom";
 import { MdCancel, MdOutlineModeEditOutline } from "react-icons/md";
-import { Button, Col, Row, Table } from "antd";
-import { PortUrlRoute } from "src/utils/urlsRouter";
 import { LoadingButton } from "@mui/lab";
 import UploadImage from "src/components/FileUpload";
-import { MenuValidation } from "src/utils/validationsForms";
-import { TextField } from "@mui/material";
 import { useDebounce } from "src/hooks/useDebounce";
-import { toastError } from "src/settings/ToastReact/ToastReact";
 import { useMutation, useQuery } from "react-query";
+import { toastError } from "src/settings/ToastReact/ToastReact";
+import { ServisesService } from "src/services/servis/portfolio.service";
 import { toastr } from "react-redux-toastr";
-import { INewsPort } from "./News.props";
-import { PrortFolioService } from "src/services/portfolio/portfolio.service";
-interface Props {}
-
-function PortfolioPage({}: Props): ReactElement {
-  const { handleSubmit, control, reset } = useForm<INewsPort>();
+import { ServisesUrlRoute } from "src/utils/urlsRouter";
+import TextEditor from "src/components/formEditor/TextEditor";
+export default function ServicesPage(): ReactElement {
+  const { handleSubmit, control, reset } = useForm<any>();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -34,33 +30,33 @@ function PortfolioPage({}: Props): ReactElement {
     control,
   });
   const queryData = useQuery(
-    ["Portfolio list", debouncedSearch],
-    () => PrortFolioService.getAll(debouncedSearch),
+    ["servises list", debouncedSearch],
+    () => ServisesService.getAll(debouncedSearch),
     {
       select: ({ data }: any) => {
         return data.data;
       },
       onError(error: any) {
-        toastError(error, "Portfolio list");
+        toastError(error, "servises list");
       },
     }
   );
   const { mutateAsync } = useMutation(
-    "create Portfolio",
-    (data: any) => PrortFolioService.create(data),
+    "create servises",
+    (data: any) => ServisesService.create(data),
     {
       onError(error: any) {
         toastError(error, "Ошибка");
       },
       onSuccess() {
-        toastr.success("Портфолио", "Портфолио успешно добавлен");
+        toastr.success("Услуги", "Услуги успешно добавлен");
         queryData.refetch();
       },
     }
   );
   const { mutateAsync: deleteAsync } = useMutation(
-    "delete Portfolio",
-    (genreId: string) => PrortFolioService.delete(genreId),
+    "delete servises",
+    (genreId: string) => ServisesService.delete(genreId),
     {
       onError(error) {
         toastError(error, "Ошибка при удаление");
@@ -72,9 +68,9 @@ function PortfolioPage({}: Props): ReactElement {
     }
   );
   const { data, isLoading } = queryData;
-  const Newscolumns: ColumnsType<INewsPropsColumns> = [
+  const Newscolumns: ColumnsType<any> = [
     {
-      title: "Загаловка Портфолио",
+      title: "Загаловка Услуги",
       key: "name",
       dataIndex: "name",
     },
@@ -84,9 +80,9 @@ function PortfolioPage({}: Props): ReactElement {
       dataIndex: "file",
       render: (url: string) => {
         return (
-          <PortFolioStyled>
+          <ServicesPageStyled>
             <img className="image__colomns" src={`${url}`} alt="jpg" />
-          </PortFolioStyled>
+          </ServicesPageStyled>
         );
       },
     },
@@ -101,25 +97,25 @@ function PortfolioPage({}: Props): ReactElement {
       dataIndex: "id",
       render: (id: string) => {
         return (
-          <PortFolioStyled>
-            <Link className="warning__edit" to={`${PortUrlRoute}/${id}`}>
+          <ServicesPageStyled>
+            <Link className="warning__edit" to={`${ServisesUrlRoute}/${id}`}>
               <MdOutlineModeEditOutline />
             </Link>
             <Button onClick={() => deleteAsync(id)} type="primary" danger>
               <MdCancel />
             </Button>
-          </PortFolioStyled>
+          </ServicesPageStyled>
         );
       },
     },
   ];
-  const onSubmit: SubmitHandler<INewsPort> = async (data: INewsPort) => {
+  const onSubmit: SubmitHandler<any> = async (data: any) => {
     await mutateAsync(data);
     reset();
   };
   return (
-    <>
-      <h2>PortfolioPage</h2>
+    <ServicesPageStyled>
+      <h2>Услуги</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
@@ -131,7 +127,6 @@ function PortfolioPage({}: Props): ReactElement {
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
               fullWidth={true}
-              
               size="small"
               margin="normal"
               className="auth-form__input"
@@ -140,24 +135,7 @@ function PortfolioPage({}: Props): ReactElement {
             />
           )}
         />
-        <Controller
-          control={control}
-          name="text"
-          render={({ field }) => (
-            <TextField
-              label="Добавить текст"
-              rules={MenuValidation}
-              onChange={(e) => field.onChange(e)}
-              value={field.value || ""}
-              fullWidth={true}
-              size="small"
-              margin="normal"
-              className="auth-form__input"
-              error={!!errors?.text?.message}
-              helperText={errors?.text?.message}
-            />
-          )}
-        />
+
         <Controller
           control={control}
           name="file"
@@ -179,7 +157,7 @@ function PortfolioPage({}: Props): ReactElement {
         </LoadingButton>
       </form>
       <Row>
-        <Col xl={16}>
+        <Col xl={24}>
           <Table
             loading={isLoading}
             rowKey="id"
@@ -188,8 +166,6 @@ function PortfolioPage({}: Props): ReactElement {
           />
         </Col>
       </Row>
-    </>
+    </ServicesPageStyled>
   );
 }
-
-export default PortfolioPage;

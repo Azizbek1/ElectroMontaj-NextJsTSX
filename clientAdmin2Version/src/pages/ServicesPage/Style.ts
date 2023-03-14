@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
 export default styled.div`
-  .flex_buttons{
-    display: flex;
-  }
-  .image_uslugi {
-    width: 100px !important;
-    height: 100px;
-  }
   .warning__edit {
     padding: 5px;
     border-radius: 4px;

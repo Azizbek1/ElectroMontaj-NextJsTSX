@@ -1,4 +1,4 @@
-import {  Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import {
   Controller,
   SubmitHandler,
@@ -70,14 +70,19 @@ function UslugiPage() {
       },
     }
   );
-  const onSubmit: SubmitHandler<ISliderAdd> = async (data: ISliderAdd) => {
-    const { text, url } = data;
-    await mutateAsync({ text,  url, show: true });
+  const onSubmit: SubmitHandler<any> = async (data: any) => {
+    const { text, url, name } = data;
+    await mutateAsync({ name, text, url, show: true });
     reset();
   };
   const Uslugicolumns: ColumnsType<ISlidePropsColumns> = [
     {
-      title: "Загаловка слидера",
+      title: "Загаловка Нам доверяют",
+      key: "name",
+      dataIndex: "name",
+    },
+    {
+      title: "Текст Нам доверяют",
       key: "text",
       dataIndex: "text",
     },
@@ -100,12 +105,14 @@ function UslugiPage() {
       render: (id: string) => {
         return (
           <SliderPageStyled>
-            <Link className="warning__edit" to={`${UslugiUrlRoute}/${id}`}>
-              <MdOutlineModeEditOutline />
-            </Link>
-            <Button onClick={() => deleteAsync(id)} type="primary" danger>
-              <MdCancel />
-            </Button>
+            <div className="flex_buttons">
+              <Link className="warning__edit" to={`${UslugiUrlRoute}/${id}`}>
+                <MdOutlineModeEditOutline />
+              </Link>
+              <Button onClick={() => deleteAsync(id)} type="primary" danger>
+                <MdCancel />
+              </Button>
+            </div>
           </SliderPageStyled>
         );
       },
@@ -117,10 +124,28 @@ function UslugiPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
-          name="text"
+          name="name"
           render={({ field }) => (
             <TextField
               label="Добавить Загаловку"
+              rules={MenuValidation}
+              onChange={(e) => field.onChange(e)}
+              value={field.value || ""}
+              fullWidth={true}
+              size="small"
+              margin="normal"
+              className="auth-form__input"
+              error={!!errors?.name?.message}
+              helperText={errors?.name?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="text"
+          render={({ field }) => (
+            <TextField
+              label="Добавить текст"
               rules={MenuValidation}
               onChange={(e) => field.onChange(e)}
               value={field.value || ""}
@@ -154,7 +179,7 @@ function UslugiPage() {
         </LoadingButton>
       </form>
       <Row>
-        <Col xl={16}>
+        <Col xl={20}>
           <Table
             loading={isLoading}
             rowKey="id"

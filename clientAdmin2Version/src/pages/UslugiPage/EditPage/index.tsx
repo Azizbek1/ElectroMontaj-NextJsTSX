@@ -16,7 +16,7 @@ import { SlideService } from "src/services/sliders/slide.service";
 import { toastError } from "src/settings/ToastReact/ToastReact";
 import { ISliderAdd } from "../Slider.props";
 import { UslugiService } from "src/services/uslugi/uslugi.service";
-
+import UslugiEditStyled from '../Style'
 function EditUslugiPage(): ReactElement {
   const { handleSubmit, control, reset } = useForm<ISliderAdd>();
   const { id } = useParams();
@@ -48,13 +48,29 @@ function EditUslugiPage(): ReactElement {
     }
   );
   const onSubmit = async (data: any) => {
-    const { text, slogan, url } = data;
-    await mutateAsync({ text, slogan, url, show: true });
+    const { name,  text, url } = data;
+    await mutateAsync({ text, name,  url, show: true });
   };
-  console.log(data);
   return (
-    <div>
+    <UslugiEditStyled>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          control={control}
+          name="name"
+          render={({ field }) => (
+            <TextField
+              label="Добавить Загаловку"
+              onChange={(e) => field.onChange(e)}
+              value={field.value || data?.data?.data.name}
+              fullWidth={true}
+              size="small"
+              margin="normal"
+              className="auth-form__input"
+              error={!!errors?.name?.message}
+              helperText={errors?.name?.message}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="text"
@@ -82,7 +98,7 @@ function EditUslugiPage(): ReactElement {
         <img
           src={data?.data.data.url}
           alt="png"
-          className=""
+          className="image_uslugi"
           style={{ borderRadius: "50%", width: "50px" }}
         />
         <LoadingButton
@@ -97,7 +113,7 @@ function EditUslugiPage(): ReactElement {
           Редактировать
         </LoadingButton>
       </form>
-    </div>
+    </UslugiEditStyled>
   );
 }
 export default EditUslugiPage;
